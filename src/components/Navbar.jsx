@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MainPages, LoginPages } from '../routes/paths';
 import Button from './Button';
-import sprite from '../assets/sprite.svg';
+import sprite from '/sprite.svg';
 
 const Menu = props => {
   return (
