@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../components/Button';
 import { LoginPages, MainPages } from '../routes/paths';
 import sprite from '/sprite.svg';
+import sprite from '/sprite.svg';
 import landing1 from '../assets/home/landing-1.png';
 import landing2 from '../assets/home/landing-2.png';
 import mission from '../assets/home/mission.png';

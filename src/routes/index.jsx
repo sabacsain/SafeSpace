@@ -13,6 +13,7 @@ import Hotlines from '../views/Hotlines';
 import News from '../views/News';
 import Communities from '../views/Communities';
 import Contact from '../views/Contact';
+import Testimonials from '../views/Testimonials';
 
 const MainRoutes = [
     {
@@ -50,6 +51,10 @@ const MainRoutes = [
     {
         path: MainPages.CONTACT,
         element: <Contact />
+    },
+    {
+        path: MainPages.TESTIMONIALS,
+        element: <Testimonials />
     },
 ];
 
