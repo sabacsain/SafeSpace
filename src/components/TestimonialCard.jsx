@@ -3,7 +3,7 @@ import sprite from '/sprite.svg';
 
 const TestimonialCard = (props) => {
   return (
-    <div className='relative drop-shadow-xl'>
+    <div className='relative mx-6 drop-shadow-xl'>
       <div className='flex flex-col items-center w-80 h-96 bg-primary text-secondary-200 rounded-xl overflow-hidden'>
         <div className='flex justify-center items-center gap-3 w-full h-1/6 bg-secondary-200'>
         {[...Array(5)].map((_, index) => (
