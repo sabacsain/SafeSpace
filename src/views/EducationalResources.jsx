@@ -10,7 +10,7 @@ const PokeCard = props => {
     <div className={`flex flex-col items-center justify-center h-120 w-64 bg-primary rounded-2xl border-primary-500 border-opacity-50 ${props.title === "Students Against Depression" ? 'px-8 py-3' : ''} transform transition-transform duration-300 ease-in-out hover:scale-105`} style={{ boxShadow: '0px 8px 20px rgba(0, 0, 0, 0.4)'}}>
       <img src={props.image} className={`mx-auto pt-6 h-28 mb-3 ${props.title === "Students Against Depression" ? 'px-5' : 'px-10'}`} />
       <h1 className={`text-xl font-semibold pb-3 border-b-2 px-3 border-secondary-200 text-center text-secondary-200`}>{props.title}</h1>
-      <p className={`items-center h-full py-6 text-xs text-center ${props.title === "Students Against Depression" ? 'px-2' : 'px-10'}`}>
+      <p className={`items-center h-full py-6 text-xs text-justify ${props.title === "Students Against Depression" ? 'px-2' : 'px-10'}`}>
         {props.children}
       </p>
     </div>
@@ -23,9 +23,9 @@ const EducationalResources = () => {
     <>
     <div className='container relative flex items-center w-full h-32 pt-3 pl-16 pr-16 -mt-[3vh] bg-secondary-200'>
       <div className='relative flex items-center justify-between w-full'>
-        <img src={educlogo} className='w-24 h-auto transform scale-x-[-1]' />
+        <img src={educlogo} className='w-24 h-auto transform scale-x-[-1] opacity-70' />
         <h1 className='text-primary text-4xl font-semibold whitespace-nowrap'>EDUCATIONAL RESOURCES</h1>
-        <img src={educlogo} className='w-24 h-auto' />
+        <img src={educlogo} className='w-24 h-auto opacity-70' />
       </div>
     </div>
 
