@@ -1,11 +1,37 @@
-import React from 'react';
-import Button from '../components/Button';
+import React, {useState} from 'react';
+import { useNavigate} from 'react-router-dom';
 import { LoginPages, MainPages } from '../routes/paths';
 import login_image from '../assets/login/login.png';
-import logo_image from '/logo.png';
+import axios from 'axios';
+
 
 
 const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  function handleSubmit(event){
+    event.preventDefault();
+    axios.post('http://localhost:8087/login', {username, password})
+    .then(res => {
+      console.log(res.data);
+      
+      // Go to Homepage if login is successful
+      if (res.data == "Login Successful"){
+        navigate(MainPages.HOME); 
+
+      } else if (res.data == "Incorrect Email or Password"){
+        alert("Login Failed. Incorrect Email or Password.");
+
+      } else{
+        alert("Something went wrong. Please try again later.");
+      }
+    })
+    .catch(err => console.log(err));
+        
+  }
+
   return (
     <>
   <div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
@@ -26,7 +52,7 @@ const Login = () => {
                 LOGIN
               </h4>
               
-              <form class="max-w-lg mx-auto">
+              <form class="max-w-lg mx-auto" onSubmit={handleSubmit}>
                 
               {/* USERNAME */}
                 <div class="mb-5">
@@ -37,7 +63,8 @@ const Login = () => {
                       <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
                       </svg>
                     </div>
-                    <input type="text" id="username" class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Username"/>
+                    <input type="text" id="username" class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Username"
+                      onChange = {e => setUsername(e.target.value)}  />
                   </div>
                 </div>
 
@@ -50,14 +77,15 @@ const Login = () => {
                       <path fill-rule="evenodd" d="M8 10V7a4 4 0 1 1 8 0v3h1a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h1Zm2-3a2 2 0 1 1 4 0v3h-4V7Zm2 6a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1Z" clip-rule="evenodd"/>
                     </svg>
                     </div>
-                    <input type="text" id="password" class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password"/>
+                    <input type="password" id="password" class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password"
+                      onChange = {e => setPassword(e.target.value)}  />
                 </div>
                 </div>
                 
                 
                 <div class="flex items-start mb-5">
                   <div class="flex items-center h-5">
-                    <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required />
+                    <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" />
                   </div>
                   <label for="remember" class="ms-2 text-sm font-small text-secondary-200 dark:text-gray-100">Remember Me</label>
                   
@@ -65,12 +93,22 @@ const Login = () => {
 
                 </div>
                 
+                
+                <div class = "flex flex-col items-center" >
+
+                  {/* <Button type="submit" >LOGIN</Button> */}
+                  
+                  {/* Note Hindi 'to galing sa Custom Button. Ayaw kasi 'pag yung custom need ng link agad sa parameter. */}
+                  <button class="h-fit px-8 py-2 font-semibold rounded-full drop-shadow-md transition-colors ease-in-out bg-secondary-200 hover:bg-accent text-primary" >LOGIN</button>
+                  
+                  <div class ="mb-20">
+                    <h4 class = "mt-5 text-sm font-small text-tertiary-200">Don't have an account yet?<a href={LoginPages.SIGNUP} class="ms-2 text-sm font-small text-tertiary-200 dark:text-blue-500 hover:underline">Sign up</a></h4>
+                  </div>
+                </div>
+
               </form>
               
-              <Button link={MainPages.HOME}>LOGIN</Button>
-              <div class ="mb-20">
-                <h4 class = "mt-5 text-sm font-small text-tertiary-200">Don't have an account yet?<a href={LoginPages.SIGNUP} class="ms-2 text-sm font-small text-tertiary-200 dark:text-blue-500 hover:underline">Sign up</a></h4>
-              </div>
+              
 
         
 
