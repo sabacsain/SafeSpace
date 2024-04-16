@@ -9,10 +9,10 @@ const HotlineCard = props => {
   return (
     <div className={`flex mx-auto px-2 py-2 border w-2/3 text-lg text-center rounded-2xl ${props.title === 'Hopeline Philippines' || props.title === 'Manila Lifeline Centre' ? 'bg-primary text-secondary-200': 'bg-secondary-200 text-primary'} transform transition-transform duration-300 ease-in-out hover:scale-105`} style={{ boxShadow: '0px 8px 20px rgba(0, 0, 0, 0.1)'}}> 
           <img src={props.image} className={`pl-6 pt-6 h-24 mb-3 pr-10`} />
-          <p className={`mx-auto h-full pt-12 text-2xl ml-8 font-bold ${props.title === 'Hopeline Philippines' || props.title === 'Manila Lifeline Centre' ? 'bg-primary text-secondary-200': 'bg-secondary-200 text-primary'}`}>
+          <p className={`mx-auto h-full pt-10 text-2xl ml-8 font-bold ${props.title === 'Hopeline Philippines' || props.title === 'Manila Lifeline Centre' ? 'bg-primary text-secondary-200': 'bg-secondary-200 text-primary'}`}>
             {props.title}
           </p>
-          <p className={`items-center h-full pt-12 text-2xl pr-12 font-medium text-justify ${props.title === 'Hopeline Philippines' || props.title === 'Manila Lifeline Centre' ? 'bg-primary text-secondary-200': 'bg-secondary-200 text-primary'}`}>
+          <p className={`items-center h-full pt-10 text-2xl pr-12 font-medium text-justify ${props.title === 'Hopeline Philippines' || props.title === 'Manila Lifeline Centre' ? 'bg-primary text-secondary-200': 'bg-secondary-200 text-primary'}`}>
           {props.number}
           </p>
         </div>
