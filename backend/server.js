@@ -27,6 +27,8 @@ const db = mysql.createConnection({
 })
 
 app.post('/login', (req, res) => {
+    res.set('Access-Control-Allow-Origin', 'https://safe-space-ivory.vercel.app/');
+    res.send({ "msg": "This has CORS enabled 🎈" });
     const username = req.body.username;
     const password = req.body.password;
     const sql = "SELECT * FROM user WHERE username = ? AND password = ?";
@@ -42,6 +44,9 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/signup', (req, res) => {
+    res.set('Access-Control-Allow-Origin', 'https://safe-space-ivory.vercel.app/');
+    res.send({ "msg": "This has CORS enabled 🎈" });
+
     const first_name = req.body.first_name;
     const last_name = req.body.last_name;
     const email = req.body.email;
