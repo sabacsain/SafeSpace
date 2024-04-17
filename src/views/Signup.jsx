@@ -129,7 +129,7 @@ const Signup = () => {
                   {/* Note Hindi 'to galing sa Custom Button. Ayaw kasi 'pag yung custom need ng link agad sa parameter. */}
                   <button class="h-fit px-8 py-2 font-semibold rounded-full drop-shadow-md transition-colors ease-in-out bg-secondary-200 hover:bg-accent text-primary" >SIGN UP</button>
                   <div class ="mb-20">
-                    <h4 class = "mt-5 text-sm font-small text-tertiary-200">Already have an account?<a href={LoginPages.LOGIN} class="ms-2 text-sm font-small text-tertiary-200 dark:text-blue-500 hover:underline">Login</a></h4>
+                    <h4 class = "mt-5 text-sm font-small text-tertiary-200">Already have an account?<Link to={LoginPages.Login} class="ms-2 text-sm font-small text-tertiary-200 dark:text-blue-500 hover:underline">Login</Link></h4>
                   </div>
                 </div>     
 
