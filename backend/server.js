@@ -1,5 +1,5 @@
 const express = require('express');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const cors = require('cors');
 
 const app = express();
@@ -8,11 +8,10 @@ app.use(express.json());
 app.use(cors());
 
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "safe-space"
-
+    host: "sql.freedb.tech",
+    user: "freedb_safe-space",
+    password: "Rw@fnA5CkBfbsb7",
+    database: "freedb_safe-space"
 })
 
 app.post('/login', (req, res) => {
@@ -62,6 +61,6 @@ app.post('/signup', (req, res) => {
 });
 })
 
-app.listen(8087, () => {
+app.listen(8083, () => {
      console.log("Listening...");
 })
