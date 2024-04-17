@@ -1,23 +1,11 @@
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
+
 const app = express();
-const allowedOrigins = ['https://safespace-backend.vercel.app/*', 
-                        'https://safe-space-ivory.vercel.app/*'];
 
 app.use(express.json());
-
-
-app.use(cors({
-    origin: function (origin, callback) {
-      // Check if the origin is allowed
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    }
-  }));
+app.use(cors());
 
 const db = mysql.createConnection({
     host: "sql.freedb.tech",

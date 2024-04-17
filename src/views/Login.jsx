@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import { useNavigate, Link} from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import { LoginPages, MainPages } from '../routes/paths';
 import login_image from '../assets/login/login.png';
 import axios from 'axios';
+
 
 
 const Login = () => {
@@ -88,7 +89,7 @@ const Login = () => {
                   </div>
                   <label for="remember" class="ms-2 text-sm font-small text-secondary-200 dark:text-gray-100">Remember Me</label>
                   
-                  <Link to={LoginPages.SIGNUP} class="mb-5 ms-2 text-sm font-small text-tertiary-200 dark:text-blue-500 hover:underline">Forgot Password?</Link>
+                  <a href={LoginPages.SIGNUP} class="mb-5 ms-2 text-sm font-small text-tertiary-200 dark:text-blue-500 hover:underline">Forgot Password?</a>
 
                 </div>
                 
@@ -101,7 +102,7 @@ const Login = () => {
                   <button class="h-fit px-8 py-2 font-semibold rounded-full drop-shadow-md transition-colors ease-in-out bg-secondary-200 hover:bg-accent text-primary" >LOGIN</button>
                   
                   <div class ="mb-20">
-                    <h4 class = "mt-5 text-sm font-small text-tertiary-200">Don't have an account yet?<Link to={LoginPages.SIGNUP} class="ms-2 text-sm font-small text-tertiary-200 dark:text-blue-500 hover:underline">Sign up</Link></h4>
+                    <h4 class = "mt-5 text-sm font-small text-tertiary-200">Don't have an account yet?<a href={LoginPages.SIGNUP} class="ms-2 text-sm font-small text-tertiary-200 dark:text-blue-500 hover:underline">Sign up</a></h4>
                   </div>
                 </div>
 
