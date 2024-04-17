@@ -6,7 +6,7 @@ const cors = require('cors');
 const PORT = 4000
 
 app.use(cors({
-    origin: "https://safe-space-ivory.vercel.app/",
+    origin: ["https://safe-space-ivory.vercel.app", "http://localhost:5173"],
     methods : ["GET", "POST"],
   }));
 
