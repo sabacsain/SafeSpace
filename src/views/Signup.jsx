@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate, Link} from 'react-router-dom';
 import { LoginPages, MainPages } from '../routes/paths';
 import signup_image from '../assets/login/signup.png';
 import login_image from '../assets/login/login.png';
 import Login from './Login';
 import axios from 'axios';
+
 
 const Signup = () => {
   const [first_name, setFirstName] = useState('');
