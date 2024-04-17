@@ -6,7 +6,7 @@ const cors = require('cors');
 const PORT = 4000
 
 app.use(cors({
-    origin: ["https://safe-space-ivory.vercel.app:4000", "http://localhost:5173"],
+    origin: ["https://safe-space-ivory.vercel.app", "http://localhost:5173"],
     methods : ["GET", "POST"],
   }));
 
@@ -67,6 +67,9 @@ app.post('/signup', (req, res) => {
     }
 });
 })
+
+
+app.options('*', cors());
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
