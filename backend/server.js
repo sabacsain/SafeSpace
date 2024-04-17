@@ -7,7 +7,7 @@ app.use(express.json());
 
 
 app.use(cors({
-    origin: "https://vercel.com/sabacsains-projects/safe-space",
+    origin: "https://safe-space-ivory.vercel.app/",
     methods : ["GET", "POST"],
   }));
 
