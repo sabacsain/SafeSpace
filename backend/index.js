@@ -1,45 +1,17 @@
-const express = require("express"); 
-const app = express(); 
-const mysql = require('mysql2');
-const cors = require('cors');
+// index.js
+const express = require('express')
+const app = express()
+const PORT = 4000
 
-const PORT = process.env.PORT || 5000; 
 
-app.use(cors());
-
-app.get("/", (req, res) => { 
-    res.send("Express on Vercel"); 
-}); 
-
-app.get("/api", (req, res) => { 
-    res.send("Express on API"); 
-}); 
-
-const db = mysql.createConnection({
-    host: "sql.freedb.tech",
-    user: "freedb_safe-space",
-    password: "Rw@fnA5CkBfbsb7",
-    database: "freedb_safe-space"
-})
-
-app.post('/login', (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
-    const sql = "SELECT * FROM user WHERE username = ? AND password = ?";
-    
-    db.query(sql, [username, password], (err, data) =>{
-        if(err) return res.json(err + " Login Failed");
-        if (data.length > 0){
-            return res.json("Login Successful");
-        } else {
-            return res.json("Incorrect Email or Password");
-        }
-    })
+app.get('/home', (req, res) => {
+  res.status(200).json('Welcome, your app is working well');
 })
 
 
-app.listen(PORT, () => { 
-    console.log(`Server is running on port ${PORT}`); 
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
 
-module.exports = app;
+// Export the Express API
+module.exports = app
