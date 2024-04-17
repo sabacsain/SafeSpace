@@ -11,38 +11,37 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  function handleSubmit(event){
+  function handleSubmit(event) {
+    event.preventDefault();
+  
     fetch('https://safespace-backend.vercel.app/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ username, password }),
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
     })
-    .then(res => {
-      console.log(res.data);
-      // Go to Homepage if login is successful
-          if (res.data == "Login Successful"){
-            navigate(MainPages.HOME); 
-
-          } else if (res.data == "Incorrect Email or Password"){
-            alert("Login Failed. Incorrect Email or Password.");
-
-          } else{
-            alert("Something went wrong. Please try again later.");
-          }
-    })
-    .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
-      alert("Something went wrong. Please try again later.");
-    });
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data === "Login Successful") {
+          navigate(MainPages.HOME);
+        } else if (data === "Incorrect Email or Password") {
+          alert("Login Failed. Incorrect Email or Password.");
+        } else {
+          throw new Error('Unexpected response data');
+        }
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+        alert("Something went wrong. Please try again later.");
+      });
   }
+  
   
   // function handleSubmit(event){
   //   event.preventDefault();
