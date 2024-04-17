@@ -1,6 +1,6 @@
 // index.js
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 const mysql = require('mysql2');
 const cors = require('cors');
 const PORT = 4000
