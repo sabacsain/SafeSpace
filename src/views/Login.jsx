@@ -11,7 +11,8 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  fetch('https://safespace-backend.vercel.app/login', {
+  function handleSubmit(event){
+    fetch('https://safespace-backend.vercel.app/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -41,6 +42,7 @@ const Login = () => {
       console.error('There was a problem with the fetch operation:', error);
       alert("Something went wrong. Please try again later.");
     });
+  }
   
   // function handleSubmit(event){
   //   event.preventDefault();
