@@ -2,21 +2,13 @@ const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
 const app = express();
-const allowedOrigins = ['https://safespace-backend.vercel.app/*', 
-                        'https://safe-space-ivory.vercel.app/*'];
 
 app.use(express.json());
 
 
 app.use(cors({
-    origin: function (origin, callback) {
-      // Check if the origin is allowed
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    }
+    origin: "https://vercel.com/sabacsains-projects/safe-space",
+    methods : ["GET", "POST"],
   }));
 
 const db = mysql.createConnection({
@@ -27,8 +19,7 @@ const db = mysql.createConnection({
 })
 
 app.post('/login', (req, res) => {
-    res.set('Access-Control-Allow-Origin', 'https://safe-space-ivory.vercel.app/');
-    res.send({ "msg": "This has CORS enabled 🎈" });
+
     const username = req.body.username;
     const password = req.body.password;
     const sql = "SELECT * FROM user WHERE username = ? AND password = ?";
@@ -44,9 +35,6 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/signup', (req, res) => {
-    res.set('Access-Control-Allow-Origin', 'https://safe-space-ivory.vercel.app/');
-    res.send({ "msg": "This has CORS enabled 🎈" });
-
     const first_name = req.body.first_name;
     const last_name = req.body.last_name;
     const email = req.body.email;
