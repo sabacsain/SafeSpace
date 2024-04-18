@@ -14,7 +14,7 @@ const Login = () => {
   function handleSubmit(event) {
     event.preventDefault();
   
-    fetch('https://safespace-backend.vercel.app/login', {
+    fetch('https://safespace-1act.onrender.com/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

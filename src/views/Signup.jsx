@@ -17,7 +17,7 @@ const Signup = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    axios.post('https://safespace-backend.vercel.app/signup', {first_name, last_name, email, username, password})
+    axios.post('https://safespace-1act.onrender.com/signup', {first_name, last_name, email, username, password})
       .then(res => {
         console.log(res.data); 
 
