@@ -28,20 +28,23 @@ app.post('/login', (req, res) => {
     if (!username || !password) {
       return res.status(400).json({ error: 'Username or password is missing' });
     }
+    else{
+        res.status(200).json('Welcome, LOGIN!');
+    }
   
-    const sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+    // const sql = "SELECT * FROM user WHERE username = ? AND password = ?";
     
-    db.query(sql, [username, password], (err, data) => {
-      if (err) {
-        console.error('Database error:', err);
-        return res.status(500).json({ error: 'Internal server error' });
-      }
-      if (data.length > 0) {
-        return res.json({ message: 'Login Successful' });
-      } else {
-        return res.status(401).json({ error: 'Incorrect Email or Password' });
-      }
-    });
+    // db.query(sql, [username, password], (err, data) => {
+    //   if (err) {
+    //     console.error('Database error:', err);
+    //     return res.status(500).json({ error: 'Internal server error' });
+    //   }
+    //   if (data.length > 0) {
+    //     return res.json({ message: 'Login Successful' });
+    //   } else {
+    //     return res.status(401).json({ error: 'Incorrect Email or Password' });
+    //   }
+    // });
   });
   
 
