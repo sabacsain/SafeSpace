@@ -1,52 +1,34 @@
 const express = require('express');
-const app = express();
 const mysql = require('mysql2');
 const cors = require('cors');
-const PORT = 4000
 
-app.use(cors({
-    origin: ["https://safe-space-ivory.vercel.app", "http://localhost:5173"],
-    methods : ["GET", "POST"],
-  }));
+const app = express();
+
+app.use(express.json());
+app.use(cors());
 
 const db = mysql.createConnection({
     host: "sql.freedb.tech",
     user: "freedb_safe-space",
     password: "Rw@fnA5CkBfbsb7",
     database: "freedb_safe-space"
-})
 
-app.get('/home', (req, res) => {
-  res.status(200).json('Welcome, your app is working well');
 })
-
 
 app.post('/login', (req, res) => {
-    const { username, password } = req.body;
-  
-    // Check if username or password is missing
-    if (!username || !password) {
-      return res.status(400).json({ error: 'Username or password is missing' });
-    }
-    else{
-        res.status(200).json('Welcome, LOGIN!');
-    }
-  
-    // const sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+    const username = req.body.username;
+    const password = req.body.password;
+    const sql = "SELECT * FROM user WHERE username = ? AND password = ?";
     
-    // db.query(sql, [username, password], (err, data) => {
-    //   if (err) {
-    //     console.error('Database error:', err);
-    //     return res.status(500).json({ error: 'Internal server error' });
-    //   }
-    //   if (data.length > 0) {
-    //     return res.json({ message: 'Login Successful' });
-    //   } else {
-    //     return res.status(401).json({ error: 'Incorrect Email or Password' });
-    //   }
-    // });
-  });
-  
+    db.query(sql, [username, password], (err, data) =>{
+        if(err) return res.json(err + " Login Failed");
+        if (data.length > 0){
+            return res.json("Login Successful");
+        } else {
+            return res.json("Incorrect Email or Password");
+        }
+    })
+})
 
 app.post('/signup', (req, res) => {
     const first_name = req.body.first_name;
@@ -80,12 +62,6 @@ app.post('/signup', (req, res) => {
 });
 })
 
-
-app.options('*', cors());
-
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
-
-// Export the Express API
-module.exports = app
+app.listen(8081, () => {
+     console.log("Listening...");
+})
