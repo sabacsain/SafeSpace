@@ -6,6 +6,9 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use(bodyparser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
 
 const db = mysql.createConnection({
     host: "sql.freedb.tech",
