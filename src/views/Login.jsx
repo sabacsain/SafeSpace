@@ -11,36 +11,58 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  function handleSubmit(event) {
-    event.preventDefault();
-  
-    fetch('https://safespace-1act.onrender.com/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password }),
+  // Function to handle login
+  function handleLogin(username, password) {
+  // Make a POST request to the login endpoint
+  axios.post('https://safespace-backend.vercel.app/login', { username, password })
+    .then(response => {
+      // Handle successful response
+      console.log(response.data); // Log the response data
+      // Check the response data and perform actions accordingly
+      if (response.data === "Login Successful") {
+        // Redirect or perform other actions for successful login
+        console.log("Login Successful");
+      } else {
+        // Handle other login scenarios (e.g., incorrect email/password)
+        console.log("Login Failed:", response.data);
+      }
     })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        if (data === "Login Successful") {
-          navigate(MainPages.HOME);
-        } else if (data === "Incorrect Email or Password") {
-          alert("Login Failed. Incorrect Email or Password.");
-        } else {
-          throw new Error('Unexpected response data');
-        }
-      })
-      .catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
-        alert("Something went wrong. Please try again later.");
-      });
-  }
+    .catch(error => {
+      // Handle errors
+      console.error('Error during login:', error);
+    });
+}
+
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+  
+  //   fetch('https://safespace-1act.onrender.com/login', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({ username, password }),
+  //   })
+  //     .then(response => {
+  //       if (!response.ok) {
+  //         throw new Error('Network response was not ok');
+  //       }
+  //       return response.json();
+  //     })
+  //     .then(data => {
+  //       if (data === "Login Successful") {
+  //         navigate(MainPages.HOME);
+  //       } else if (data === "Incorrect Email or Password") {
+  //         alert("Login Failed. Incorrect Email or Password.");
+  //       } else {
+  //         throw new Error('Unexpected response data');
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.error('There was a problem with the fetch operation:', error);
+  //       alert("Something went wrong. Please try again later.");
+  //     });
+  // }
   
   
   // function handleSubmit(event){
