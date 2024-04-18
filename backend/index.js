@@ -1,12 +1,13 @@
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use(bodyparser.urlencoded({     // to support URL-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
@@ -34,35 +35,37 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/signup', (req, res) => {
-    const first_name = req.body.first_name;
-    const last_name = req.body.last_name;
-    const email = req.body.email;
-    const username = req.body.username;
-    const password = req.body.password;
+    console.log(req.body);
+    return null;
+//     const first_name = req.body.first_name;
+//     const last_name = req.body.last_name;
+//     const email = req.body.email;
+//     const username = req.body.username;
+//     const password = req.body.password;
 
-    const sqlCheck = "SELECT * FROM user WHERE username = ?";
-    const sqlInsert = "INSERT INTO user (first_name, last_name, email, username, password) VALUES (?, ?, ?, ?, ?)";
+//     const sqlCheck = "SELECT * FROM user WHERE username = ?";
+//     const sqlInsert = "INSERT INTO user (first_name, last_name, email, username, password) VALUES (?, ?, ?, ?, ?)";
 
-    // Check if the username already exists
-    db.query(sqlCheck, [username], (err, data) => {
-    if (err) {
-        console.error(err);
-        return res.json(err + " Signup Failed");
-    }
-    console.log(data);
-    if (data.length > 0) {
-        // Username already exists
-        return res.json("User already exists");
-    } else {
-        // Username is available, proceed with signup
-        db.query(sqlInsert, [first_name, last_name, email, username, password], (err) => {
-            if (err) {
-                res.json(err + " Signup Failed");
-            }
-            return res.json("Signup Successful");
-        });
-    }
-});
+//     // Check if the username already exists
+//     db.query(sqlCheck, [username], (err, data) => {
+//     if (err) {
+//         console.error(err);
+//         return res.json(err + " Signup Failed");
+//     }
+//     console.log(data);
+//     if (data.length > 0) {
+//         // Username already exists
+//         return res.json("User already exists");
+//     } else {
+//         // Username is available, proceed with signup
+//         db.query(sqlInsert, [first_name, last_name, email, username, password], (err) => {
+//             if (err) {
+//                 res.json(err + " Signup Failed");
+//             }
+//             return res.json("Signup Successful");
+//         });
+//     }
+// });
 })
 
 app.listen(8081, () => {
