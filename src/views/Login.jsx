@@ -1,15 +1,24 @@
 import React, {useState} from 'react';
-import { useNavigate} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import { LoginPages, MainPages } from '../routes/paths';
 import login_image from '../assets/login/login.png';
 import axios from 'axios';
-
+import { auth, provider } from '../config/firebase';
+import { signInWithPopup} from 'firebase/auth';
 
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  
+  const signInWithGoogle = async () => {
+    const result = await signInWithPopup(auth, provider);
+    console.log(result);
+    navigate(MainPages.HOME);
+  };
+
+  
 
   function handleSubmit(event){
     event.preventDefault();
@@ -81,32 +90,27 @@ const Login = () => {
                       onChange = {e => setPassword(e.target.value)}  />
                 </div>
                 </div>
-                
-                
-                <div class="flex items-start mb-5">
-                  <div class="flex items-center h-5">
-                    <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" />
-                  </div>
-                  <label for="remember" class="ms-2 text-sm font-small text-secondary-200 dark:text-gray-100">Remember Me</label>
-                  
-                  <a href={LoginPages.SIGNUP} class="mb-5 ms-2 text-sm font-small text-tertiary-200 dark:text-blue-500 hover:underline">Forgot Password?</a>
-
-                </div>
-                
-                
+                        
+ 
                 <div class = "flex flex-col items-center" >
-
                   {/* <Button type="submit" >LOGIN</Button> */}
-                  
                   {/* Note Hindi 'to galing sa Custom Button. Ayaw kasi 'pag yung custom need ng link agad sa parameter. */}
                   <button class="h-fit px-8 py-2 font-semibold rounded-full drop-shadow-md transition-colors ease-in-out bg-secondary-200 hover:bg-accent text-primary" >LOGIN</button>
                   
-                  <div class ="mb-20">
-                    <h4 class = "mt-5 text-sm font-small text-tertiary-200">Don't have an account yet?<a href={LoginPages.SIGNUP} class="ms-2 text-sm font-small text-tertiary-200 dark:text-blue-500 hover:underline">Sign up</a></h4>
+                  <div class ="mb-5">
+                    <h4 class = "mt-5 text-sm font-small text-tertiary-200">Don't have an account yet?<Link to={LoginPages.SIGNUP} class="ms-2 text-sm font-small text-tertiary-200 dark:text-blue-500 hover:underline">Sign up</Link></h4>
                   </div>
                 </div>
 
               </form>
+
+              {/* SIGN UP with GOOGLE */}
+              <div class="flex flex-col items-center mb-20 mt-5">
+                <h4 class = "mb-5 text-lg text-l font-regular  text-secondary-200">or Sign in with</h4>
+                <div class="px-6 sm:px-0 max-w-sm">
+                    <button type="button" onClick={signInWithGoogle} class="text-white w-full  bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-between mr-2 mb-2"><svg class="mr-2 -ml-1 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>Sign up with Google<div></div></button>
+                  </div>
+              </div>
               
               
 

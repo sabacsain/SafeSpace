@@ -5,6 +5,8 @@ import signup_image from '../assets/login/signup.png';
 import login_image from '../assets/login/login.png';
 import Login from './Login';
 import axios from 'axios';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../config/firebase';
 
 const Signup = () => {
   const [first_name, setFirstName] = useState('');
@@ -14,24 +16,38 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    axios.post('http://localhost:8081/signup', {first_name, last_name, email, username, password})
-      .then(res => {
-        console.log(res.data); 
-
-        // Go to Login if Signup is successful
-        if (res.data == "Signup Successful") {
-            alert("Signup Successful. User has been created successfully.");
-            navigate(LoginPages.LOGIN);
-        } else if (res.data == "User already exists") {
-            alert("Signup Failed. Username already exists. Please choose a different username.");
-        } else {
-            alert("Something went wrong. Please try again later.");
-        }
-      })
-      .catch(err => console.log(err));
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try{
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      console.log(userCredential);
+      const user = userCredential.user;
+      localStorage.setItem('token', user.accessToken);
+      localStorage.setItem('user', JSON.stringify(user));
+      navigate(LoginPages.LOGIN);
+      
+    } catch(error){
+      console.error(error)
+    }
   }
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+  //   axios.post('http://localhost:8081/signup', {first_name, last_name, email, username, password})
+  //     .then(res => {
+  //       console.log(res.data); 
+
+  //       // Go to Login if Signup is successful
+  //       if (res.data == "Signup Successful") {
+  //           alert("Signup Successful. User has been created successfully.");
+  //           navigate(LoginPages.LOGIN);
+  //       } else if (res.data == "User already exists") {
+  //           alert("Signup Failed. Username already exists. Please choose a different username.");
+  //       } else {
+  //           alert("Something went wrong. Please try again later.");
+  //       }
+  //     })
+  //     .catch(err => console.log(err));
+  // }
   return (
     <>
   <div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
