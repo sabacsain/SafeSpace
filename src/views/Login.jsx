@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import { useNavigate, Link} from 'react-router-dom';
 import { LoginPages, MainPages } from '../routes/paths';
 import login_image from '../assets/login/login.png';
-// import axios from 'axios';
-
+import axios from 'axios';
 
 
 const Login = () => {
