@@ -12,7 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   // Function to handle login
-  function handleLogin(username, password) {
+  function handleSubmit(username, password) {
   // Make a POST request to the login endpoint
   axios.post('https://safespace-backend.vercel.app/login', { username, password })
     .then(response => {
