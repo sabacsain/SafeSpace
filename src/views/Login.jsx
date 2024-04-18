@@ -21,6 +21,7 @@ const Login = () => {
       if (response.data === "Login Successful") {
         // Redirect or perform other actions for successful login
         console.log("Login Successful");
+        navigate(MainPages.HOME);
       } else {
         // Handle other login scenarios (e.g., incorrect email/password)
         console.log("Login Failed:", response.data);
