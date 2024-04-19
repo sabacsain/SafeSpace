@@ -16,20 +16,44 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try{
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      console.log(userCredential);
-      const user = userCredential.user;
-      localStorage.setItem('token', user.accessToken);
-      localStorage.setItem('user', JSON.stringify(user));
-      navigate(LoginPages.LOGIN);
-      
-    } catch(error){
-      console.error(error)
-    }
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(data => {
+        // Handle successful user creation
+        console.log("User created successfully:", data);
+        alert("User created successfully");
+      })
+      .catch(error => {
+        // Handle errors
+        if (error.code === 'auth/email-already-in-use') {
+          console.error("Email is already in use:", error.message);
+          alert("Email is already in use:", error.message);
+        } else if (error.code === 'auth/weak-password') {
+          console.error("Weak password:", error.message);
+          alert("Weak password:", error.message);
+        } else {
+          console.error("Error creating user:", error);
+          alert("Error creating user:", error);
+        }
+      });
+
   }
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try{
+  //     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  //     console.log(userCredential);
+  //     const user = userCredential.user;
+  //     localStorage.setItem('token', user.accessToken);
+  //     localStorage.setItem('user', JSON.stringify(user));
+  //     navigate(LoginPages.LOGIN);
+      
+  //   } catch(error){
+  //     console.error(error)
+  //   }
+  // }
   // function handleSubmit(event) {
   //   event.preventDefault();
   //   axios.post('http://localhost:8081/signup', {first_name, last_name, email, username, password})

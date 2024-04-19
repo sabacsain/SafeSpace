@@ -60,10 +60,10 @@ const UserMenu = props => {
 const Navbar = () => {
   const [user] = useAuthState(auth);
 
+  console.log(user);
+
   const signUserOut = async () => {
     await signOut(auth);
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
     window.location.reload();
   };
 

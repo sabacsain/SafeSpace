@@ -2,13 +2,12 @@ import React, {useState} from 'react';
 import { Link, useNavigate} from 'react-router-dom';
 import { LoginPages, MainPages } from '../routes/paths';
 import login_image from '../assets/login/login.png';
-import axios from 'axios';
 import { auth, provider } from '../config/firebase';
-import { signInWithPopup} from 'firebase/auth';
+import { signInWithEmailAndPassword , signInWithPopup} from 'firebase/auth';
 
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   
@@ -18,28 +17,61 @@ const Login = () => {
     navigate(MainPages.HOME);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then(data => {
+        // Handle successful user login
+        console.log("User logged in successfully:", data);
+        navigate(MainPages.HOME);
+      })
+      .catch(error => {
+        // Handle login errors
+        switch (error.code) {
+          case 'auth/user-not-found':
+            console.error("User not found:", error.message);
+            alert("User not found:", error.message);
+            break;
+          case 'auth/wrong-password':
+            console.error("Incorrect password:", error.message);
+            alert("Incorrect password:", error.message);
+            break;
+          case 'auth/too-many-requests':
+            console.error("Too many login attempts. Please try again later.");
+            alert("Too many login attempts. Please try again later.");
+            break;
+          default:
+            console.error("Error logging in:", error);
+            alert("Error logging in:", error);
+            break;
+        }
+      });
+    
+    
+  }
   
 
-  function handleSubmit(event){
-    event.preventDefault();
-    axios.post('http://localhost:8081/login', {username, password})
-    .then(res => {
-      console.log(res.data);
+  // function handleSubmit(event){
+  //   event.preventDefault();
+  //   axios.post('http://localhost:8081/login', {username, password})
+  //   .then(res => {
+  //     console.log(res.data);
       
-      // Go to Homepage if login is successful
-      if (res.data == "Login Successful"){
-        navigate(MainPages.HOME); 
+  //     // Go to Homepage if login is successful
+  //     if (res.data == "Login Successful"){
+  //       navigate(MainPages.HOME); 
 
-      } else if (res.data == "Incorrect Email or Password"){
-        alert("Login Failed. Incorrect Email or Password.");
+  //     } else if (res.data == "Incorrect Email or Password"){
+  //       alert("Login Failed. Incorrect Email or Password.");
 
-      } else{
-        alert("Something went wrong. Please try again later.");
-      }
-    })
-    .catch(err => console.log(err));
+  //     } else{
+  //       alert("Something went wrong. Please try again later.");
+  //     }
+  //   })
+  //   .catch(err => console.log(err));
         
-  }
+  // }
 
   return (
     <>
@@ -63,17 +95,17 @@ const Login = () => {
               
               <form class="max-w-lg mx-auto" onSubmit={handleSubmit}>
                 
-              {/* USERNAME */}
+              {/* EMAIL */}
                 <div class="mb-5">
-                  <label for="username" class="block mb-2 text-sm font-medium text-secondary-200 dark:text-white">Username</label>
+                  <label for="email" class="block mb-2 text-sm font-medium text-secondary-200 dark:text-white">Email</label>
                   <div class="relative">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                       <svg class="w-6 h-6 text-secondary-200 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                       <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
                       </svg>
                     </div>
-                    <input type="text" id="username" class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Username"
-                      onChange = {e => setUsername(e.target.value)}  />
+                    <input type="text" id="email" class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Email"
+                      onChange = {e => setEmail(e.target.value)}  />
                   </div>
                 </div>
 
