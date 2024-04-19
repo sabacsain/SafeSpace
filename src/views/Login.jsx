@@ -42,7 +42,7 @@ const Login = () => {
             alert("Too many login attempts. Please try again later.");
             break;
           default:
-            console.error("Error logging in:", error);
+            console.error("Error logging in. Please try again", error);
             alert("Error logging in:", error);
             break;
         }

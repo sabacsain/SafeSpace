@@ -24,6 +24,7 @@ const Signup = () => {
         // Handle successful user creation
         console.log("User created successfully:", data);
         alert("User created successfully");
+        navigate(LoginPages.LOGIN);
       })
       .catch(error => {
         // Handle errors

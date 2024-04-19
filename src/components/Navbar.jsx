@@ -60,8 +60,6 @@ const UserMenu = props => {
 const Navbar = () => {
   const [user] = useAuthState(auth);
 
-  console.log(user);
-
   const signUserOut = async () => {
     await signOut(auth);
     window.location.reload();
@@ -94,7 +92,7 @@ const Navbar = () => {
         {user ? (
           <>
             <ul className='flex gap-10'>
-            <Menu name={user?.displayName}>
+            <Menu name={user?.email}>
               <UserMenu link={MainPages.HOME}>Profile</UserMenu>
               <UserMenu onClick={signUserOut} link={MainPages.HOME}>Logout</UserMenu>
             </Menu>
