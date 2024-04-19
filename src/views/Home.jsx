@@ -84,7 +84,7 @@ const Home = () => {
     {/* Landing */}
     <div className='relative flex items-center gap-16 w-full h-[95vh] pl-16 -mt-[3vh]'>
       {/* Logo */}
-      <div className='group relative grid items-center justify-items-center'>
+      <div className='group relative grid items-center justify-items-center select-none'>
         <img src='/logo.png' className='col-start-1 row-start-1 w-40 h-auto py-7 bg-secondary-100 rounded-full' />
         <div className='col-start-1 row-start-1 w-24 h-24 py-7 bg-tertiary-400 rounded-full -z-10'></div>
         <svg className='absolute col-start-1 row-start-1 ml-20 w-[30rem] h-[30rem] -z-20 fill-current'>
@@ -102,12 +102,12 @@ const Home = () => {
       </Fade>
 
       {/* Design in right */}
-      <Slide direction='right' className='absolute right-0 top-0 w-full h-full' cascade>
+      <Slide direction='right' className='absolute right-0 top-0 w-full h-full -z-10 select-none' cascade>
       <img src={landingBack} className='absolute right-0 top-0 w-[53%] h-full -z-20 ' />
       <img src={landing} className='absolute right-0 top-0 w-1/2 h-full -z-10 ' />
       </Slide>
-      <img src={landing1} className='absolute right-0 top-0 w-[32vw] h-auto' />
-      <img src={landing2} className='absolute right-0 bottom-0 w-[43.5vw] h-[47.5vh]' />
+      <img src={landing1} className='absolute right-0 top-0 w-[32vw] h-auto select-none' />
+      <img src={landing2} className='absolute right-0 bottom-0 w-[43.5vw] h-[47.5vh] select-none' />
     </div>
 
     {/* About */}
@@ -120,7 +120,7 @@ const Home = () => {
         <p>
           At Safe Space, we are dedicated to empowering individuals to  achieve optimal mental health and well-being. Through our comprehensive  support programs, educational resources, and advocacy efforts, we strive  to provide a supportive community where individuals can find  understanding, guidance, and hope. With a commitment to reducing stigma  and increasing access to mental health care, we work tirelessly to  ensure that everyone has the opportunity to lead fulfilling lives.
         </p>
-        <Button link={MainPages.ABOUT} style='bg-primary hover:bg-tertiary-200 text-secondary-200'>Learn More</Button>
+        <Button theme='light' link={MainPages.ABOUT}>Learn More</Button>
       </div>
       </Slide>
     </div>
@@ -157,7 +157,7 @@ const Home = () => {
       <h1 className=' text-secondary-200 text-4xl font-bold'>Testimonials</h1>
       </Fade>
       <div className='items-baseline w-[78%] h-[27.5rem] m-0 rounded-lg overflow-hidden'>
-      <Marquee className='items-baseline w-full h-full rounded-lg overflow-hidden' direction='right' autoFill pauseOnHover pauseOnClick>
+      <Marquee className='items-baseline w-full h-full rounded-lg overflow-hidden' direction='right' autoFill pauseOnClick>
         {testimonials.map((item, index) =>
           <TestimonialCard key={index} name={item.name} image={item.image}>{item.review}</TestimonialCard>
         )}
