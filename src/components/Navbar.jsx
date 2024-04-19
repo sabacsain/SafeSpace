@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import { Link } from 'react-router-dom';
 import { MainPages, LoginPages } from '../routes/paths';
 import Button from './Button';
 import sprite from '/sprite.svg';
+import { auth } from '../config/firebase';
+import { useAuthState} from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
 
 const Menu = props => {
   return (
@@ -38,7 +41,30 @@ const SubMenu = props => {
   );
 };
 
+const UserMenu = props => {
+  const handleClick = () => {
+    if (props.onClick) {
+      props.onClick();
+    }
+  };
+
+  return (
+    <li className='group/sub p-1 h-8 flex items-center' onClick={handleClick}>
+      <div className='bg-accent w-0 h-full group-hover/sub:w-1 rounded-sm transition-all duration-300'></div>
+      <p className='group-hover/sub:pl-2 text-secondary-200 group-hover/sub:text-accent transition-all duration-300'>
+        <Link to={props.link}>{props.children}</Link>
+      </p>
+    </li>
+  );
+};
 const Navbar = () => {
+  const [user] = useAuthState(auth);
+
+  const signUserOut = async () => {
+    await signOut(auth);
+    window.location.reload();
+  };
+
   return (
     <header className='sticky top-0 flex justify-between items-center w-full z-50 p-2 bg-primary text-secondary-200 shadow-lg'>
       <div className='flex items-center text-2xl font-extrabold'>
@@ -63,7 +89,20 @@ const Navbar = () => {
           <Menu link={MainPages.CONTACT}>Contact</Menu>
         </ul>
         
+        {user ? (
+          <>
+            <ul className='flex gap-10'>
+            <Menu name={user?.email}>
+              <UserMenu link={MainPages.HOME}>Profile</UserMenu>
+              <UserMenu onClick={signUserOut} link={MainPages.HOME}>Logout</UserMenu>
+            </Menu>
+            </ul>
+          </>
+        ) : (
         <Button link={LoginPages.LOGIN}>Join Us</Button>
+        )
+        }
+                
       </nav>
     </header>
   );
