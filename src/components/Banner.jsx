@@ -7,10 +7,10 @@ import React from 'react';
  */
 const Banner = ({ title, image  }) => {
   return (
-    <div className='sticky top-0 left-0 flex justify-between items-center px-10 w-full h-[16vh] bg-secondary-200 overflow-hidden -z-30'>
-        <div style={{ backgroundImage: `url(${image})` }} className='w-44 h-full bg-cover bg-center'></div>
+    <div className='flex justify-between items-center px-10 w-full h-[16vh] bg-secondary-200 overflow-hidden -z-30'>
+        <div style={{ backgroundImage: `url(${image})` }} className='w-44 h-full bg-cover bg-center select-none'></div>
         <h1 className='text-primary text-[2.5rem] font-bold uppercase'>{title}</h1>
-        <div style={{ backgroundImage: `url(${image})` }} className='w-44 h-full bg-cover bg-center'></div>
+        <div style={{ backgroundImage: `url(${image})` }} className='w-44 h-full bg-cover bg-center scale-x-[-1] select-none'></div>
     </div>
   );
 };
