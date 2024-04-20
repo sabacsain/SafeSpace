@@ -26,7 +26,7 @@ const MemberCard = props => {
       {isHovered && (
         <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-50 rounded-xl">
           <p className="text-white text-2xl font-bold text-center" style={{ lineHeight: '1.5' }}>
-            <span className="text-2x1 font-bold">{props.name}</span><br />
+            <span className="text-lg font-bold">{props.name}</span><br />
             <span className="text-sm">{props.position}</span>
           </p>
         </div>
@@ -65,7 +65,7 @@ const About = () => {
                 providing a supportive environment where you can be yourself.
               </p>
             </Fade>
-            <Button link={LoginPages.LOGIN} style='bg-secondary-200 hover:bg-accent text-primary absolute bottom-[20%] left-20 right-20 h-auto'>See What Our Customers Have to Say About us. View Client Testimonials</Button>
+            <Button link={LoginPages.LOGIN} customTheme='bg-secondary-200 hover:bg-accent text-primary absolute bottom-[20%] left-20 right-20 h-auto'>See What Our Customers Have to Say About us. View Client Testimonials</Button>
           </div>
         </div>
       </div>
