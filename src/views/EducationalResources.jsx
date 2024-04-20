@@ -1,9 +1,9 @@
 import React from 'react';
+import Banner from '../components/Banner';
 import mindful from '../assets/educ_resources/mindful_org.png';
 import calmharm from '../assets/educ_resources/calm_harm.png';
 import change2chill from '../assets/educ_resources/change_to_chill.png';
 import studentsxdepression from '../assets/educ_resources/students_against_depression.png';
-import educlogo from '../assets/educ_resources/educ_resources.png'
 
 const PokeCard = props => {
   return (
@@ -17,17 +17,10 @@ const PokeCard = props => {
   );
 };
 
-
 const EducationalResources = () => {
   return (
     <>
-    <div className='container relative flex items-center w-full h-32 pt-3 pl-16 pr-16 -mt-[3vh] bg-secondary-200'>
-      <div className='relative flex items-center justify-between w-full'>
-        <img src={educlogo} className='w-24 h-auto transform scale-x-[-1] opacity-70' />
-        <h1 className='text-primary text-4xl font-semibold whitespace-nowrap'>EDUCATIONAL RESOURCES</h1>
-        <img src={educlogo} className='w-24 h-auto opacity-70' />
-      </div>
-    </div>
+    <Banner title='Support Communities' image='/banner/educ_resources.png' />
 
     <div className='flex flex-col gap-16 p-12 w-full h-screen'>
       <div className='grid grid-cols-4 gap-16'>

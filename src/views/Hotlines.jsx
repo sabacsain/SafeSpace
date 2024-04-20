@@ -4,6 +4,7 @@ import hopeline from '../assets/hotlines/hopeline.png'
 import pnp from '../assets/hotlines/pnp.png'
 import manila_center from '../assets/hotlines/manila-center.png'
 import nat_center from '../assets/hotlines/nat-center.png'
+import Banner from '../components/Banner';
 
 const HotlineCard = props => {
   return (
@@ -22,13 +23,7 @@ const HotlineCard = props => {
 const Hotlines = () => {
   return (
     <>
-      <div className='container relative flex items-center w-full h-32 pt-3 pl-16 pr-16 -mt-[3vh] bg-secondary-200'>
-        <div className='relative flex items-center justify-between w-full'>
-          <img src={hotlinelogo} className='w-24 h-auto transform scale-x-[-1] opacity-70'/>
-          <h1 className='text-primary text-4xl font-semibold whitespace-nowrap'>EMERGENCY HOTLINES</h1>
-          <img src={hotlinelogo} className='w-24 h-auto opacity-70'/>
-        </div>
-      </div>
+      <Banner title='EMERGENCY Hotlines' image='/banner/hotline.png' />
 
       <div className='flex flex-col gap-4 pt-12 w-full h-screen mb-32'>
         <p className='mx-auto text-secondary-200 mb-4'>In case of emergencies and other concerns, please refer to the following contacts:</p>
