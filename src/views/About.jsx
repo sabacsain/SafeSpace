@@ -65,7 +65,7 @@ const About = () => {
                 providing a supportive environment where you can be yourself.
               </p>
             </Fade>
-            <Button link={MainPages.HOME} customTheme='bg-secondary-200 hover:bg-accent text-primary absolute bottom-[20%] left-20 right-20 h-auto'>See What Our Customers Have to Say About us. View Client Testimonials</Button>
+            <Button link={LoginPages.LOGIN} customTheme='bg-secondary-200 hover:bg-accent text-primary absolute bottom-[20%] left-20 right-20 h-auto'>See What Our Customers Have to Say About us. View Client Testimonials</Button>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@ const About = () => {
               <MemberCard image={memberimg1} name="Raiella Calubayan" position="Company CEO" />
             </Fade>
             <Fade direction='down' duration={1075}>
-              <MemberCard image={memberimg2} name="Shyirral Malapit" position="Chief Financial Officer" />
+              <MemberCard image={memberimg2} name="Shyrral Malapit" position="Chief Financial Officer" />
             </Fade>
           </div>
         </div>
