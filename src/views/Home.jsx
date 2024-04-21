@@ -49,7 +49,7 @@ const categories = [
   {
     title: <>Privacy<br/>and Security</>,
     desc: "Your privacy and security are our top priorities. Rest assured, your information is kept confidential and secure with us.",
-    bg: "/category/privacy.png"
+    bg: "/category/privacy.png", link: MainPages.PRIVACY
   },
   {
     title: <>Mental Health<br/>Updates</>,
