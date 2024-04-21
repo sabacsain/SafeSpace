@@ -75,8 +75,8 @@ const Signup = () => {
   // }
   return (
     <>
-  <div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
-    <div class="max-w-screen-lg m-0 sm:m-20 bg-white shadow-lg sm:rounded-lg flex justify-center flex-1 overflow-hidden">
+  <div class="min-h-screen bg-tertiary-200 text-gray-900 flex justify-center">
+    <div class="max-w-screen-lg m-0 sm:m-20 bg-primary shadow-lg sm:rounded-lg flex justify-center flex-1 overflow-hidden">
       
         {/* <!-- LEFT SIDE */}
         <div class="w-1/2 xl:w-1/2  relative overflow-hidden bg-cover bg-no-repeat">
@@ -170,7 +170,7 @@ const Signup = () => {
                   {/* Note Hindi 'to galing sa Custom Button. Ayaw kasi 'pag yung custom need ng link agad sa parameter. */}
                   <button class="h-fit px-8 py-2 font-semibold rounded-full drop-shadow-md transition-colors ease-in-out bg-secondary-200 hover:bg-accent text-primary" >SIGN UP</button>
                   <div class ="mb-20">
-                    <h4 class = "mt-5 text-sm font-small text-tertiary-200">Already have an account?<a href={LoginPages.LOGIN} class="ms-2 text-sm font-small text-tertiary-200 dark:text-blue-500 hover:underline">Login</a></h4>
+                    <h4 class = "mt-5 text-sm font-small text-tertiary-300">Already have an account?<a href={LoginPages.LOGIN} class="ms-2 text-sm font-small text-secondary-200 dark:text-blue-500 hover:underline">Login</a></h4>
                   </div>
                 </div>     
 
