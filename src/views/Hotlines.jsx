@@ -1,5 +1,5 @@
 import React from 'react';
-import hotlinelogo from '../assets/hotlines/hotline.png'
+import Banner from '../components/Banner';
 import hopeline from '../assets/hotlines/hopeline.png'
 import pnp from '../assets/hotlines/pnp.png'
 import manila_center from '../assets/hotlines/manila-center.png'
@@ -22,16 +22,10 @@ const HotlineCard = props => {
 const Hotlines = () => {
   return (
     <>
-      <div className='container relative flex items-center w-full h-32 pt-3 pl-16 pr-16 -mt-[3vh] bg-secondary-200'>
-        <div className='relative flex items-center justify-between w-full'>
-          <img src={hotlinelogo} className='w-24 h-auto transform scale-x-[-1] opacity-70'/>
-          <h1 className='text-primary text-4xl font-semibold whitespace-nowrap'>EMERGENCY HOTLINES</h1>
-          <img src={hotlinelogo} className='w-24 h-auto opacity-70'/>
-        </div>
-      </div>
+      <Banner title='Emergency Hotline' image='/public/banner/educ_resources.png'/>
 
-      <div className='flex flex-col gap-4 pt-12 w-full h-screen mb-32'>
-        <p className='mx-auto text-secondary-200 mb-4'>In case of emergencies and other concerns, please refer to the following contacts:</p>
+      <div className='flex flex-col gap-4 pt-12 h-screen mb-36'>
+        <p className='mb-4 w-2/3 mx-auto text-center'>SafeSpace is a Preventive Mental Health Website, if in case of emergencies and other concerns, please refer to the following hotlines:</p>
         <HotlineCard image={pnp} title='Philippine National Police (PNP)' number="911"></HotlineCard>
         <HotlineCard image={hopeline} title='Hopeline Philippines' number="2919"></HotlineCard>
         <HotlineCard image={nat_center} title='National Center for Mental Health Crisis' number="1553"></HotlineCard>
