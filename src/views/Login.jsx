@@ -75,8 +75,8 @@ const Login = () => {
 
   return (
     <>
-  <div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
-    <div class="max-w-screen-lg m-0 sm:m-20 bg-white shadow-lg sm:rounded-lg flex justify-center flex-1 overflow-hidden">
+  <div class="min-h-screen bg-tertiary-200 flex justify-center">
+    <div class="max-w-screen-lg m-0 sm:m-20 bg-primary shadow-lg sm:rounded-lg flex justify-center flex-1 overflow-hidden">
       
 
         {/* <!-- LEFT SIDE */}
@@ -127,32 +127,46 @@ const Login = () => {
                 <div class = "flex flex-col items-center" >
                   {/* <Button type="submit" >LOGIN</Button> */}
                   {/* Note Hindi 'to galing sa Custom Button. Ayaw kasi 'pag yung custom need ng link agad sa parameter. */}
-                  <button class="h-fit px-8 py-2 font-semibold rounded-full drop-shadow-md transition-colors ease-in-out bg-secondary-200 hover:bg-accent text-primary" >LOGIN</button>
+                  <button class=" h-fit px-8 py-2 font-semibold rounded-full drop-shadow-md transition-colors ease-in-out bg-secondary-200 hover:bg-accent text-primary" >LOGIN</button>
                   
                   <div class ="mb-5">
-                    <h4 class = "mt-5 text-sm font-small text-tertiary-200">Don't have an account yet?<Link to={LoginPages.SIGNUP} class="ms-2 text-sm font-small text-tertiary-200 dark:text-blue-500 hover:underline">Sign up</Link></h4>
+                    <h4 class = "mt-5 text-sm font-small text-tertiary-300">Don't have an account yet?<Link to={LoginPages.SIGNUP} class="ms-2 text-sm font-small text-secondary-200 dark:text-blue-500 hover:underline">Sign up</Link></h4>
                   </div>
                 </div>
 
               </form>
 
-              {/* SIGN UP with GOOGLE */}
-              <div class="flex flex-col items-center mb-20 mt-5">
-                <h4 class = "mb-5 text-lg text-l font-regular  text-secondary-200">or Sign in with</h4>
-                <div class="px-6 sm:px-0 max-w-sm">
-                    <button type="button" onClick={signInWithGoogle} class="text-white w-full  bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-between mr-2 mb-2"><svg class="mr-2 -ml-1 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>Sign up with Google<div></div></button>
-                  </div>
+
+              <div class="flex mt-5 items-center w-1/2 ">
+                <hr class="border-secondary-200 border-1  w-full rounded-md"></hr>
+                <label class="block font-medium text-sm text-secondary-200 w-full">
+                  or Login with
+                </label>
+                <hr class="border-secondary-200 border-1 w-full rounded-md"></hr>
               </div>
-              
+
+        
+                {/* SIGN UP with GOOGLE */}
+                <div class="mt-5 mb-20 flex items-center justify-center dark:bg-gray-800">
+                  <button onClick={signInWithGoogle} type="button" class="px-4 py-2 border flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
+                      <img class="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo"/>
+                      <span>Continue with Google</span>
+                  </button>
+                </div>
+
               
 
         
 
 
       </div>
+      
       </div>
+      
       </div>
+      
       </div>
+      
   </div>
     </>
 

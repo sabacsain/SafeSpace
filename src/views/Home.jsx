@@ -49,7 +49,7 @@ const categories = [
   {
     title: <>Privacy<br/>and Security</>,
     desc: "Your privacy and security are our top priorities. Rest assured, your information is kept confidential and secure with us.",
-    bg: "/category/privacy.png"
+    bg: "/category/privacy.png", link: MainPages.PRIVACY
   },
   {
     title: <>Mental Health<br/>Updates</>,
@@ -152,12 +152,12 @@ const Home = () => {
     </div>
 
     {/* Testimonials */}
-    <div id='testimonials' className='relative flex flex-col justify-center items-center gap-10 w-full h-screen'>
-      <Fade direction='up' className='-mt-12'>
+    <div id='testimonials' className='relative flex flex-col justify-center items-center gap-8 w-full h-screen'>
+      <Fade direction='up' className='mt-12'>
       <h1 className=' text-secondary-200 text-4xl font-bold'>Testimonials</h1>
       </Fade>
-      <div className='items-baseline w-[78%] h-[27.5rem] m-0 rounded-lg overflow-hidden'>
-      <Marquee className='items-baseline w-full h-full rounded-lg overflow-hidden' direction='right' autoFill pauseOnClick>
+      <div className='w-[75%] rounded-lg overflow-hidden'>
+      <Marquee className='w-full h-full rounded-lg overflow-hidden' direction='right' autoFill pauseOnClick>
         {testimonials.map((item, index) =>
           <TestimonialCard key={index} name={item.name} image={item.image}>{item.review}</TestimonialCard>
         )}
@@ -165,11 +165,11 @@ const Home = () => {
       </div>
 
       {/* Sides design */}
-      <Fade direction='left' className='absolute top-0 left-0 w-full h-full'>
-      <img src={testimonial} className='absolute top-0 left-0 w-[12%] h-full -z-10' />
+      <Fade direction='left' className='absolute top-0 left-0 w-full h-full -z-10'>
+      <img src={testimonial} className='absolute top-0 left-0 w-[12%] h-full -z-10 select-none' />
       </Fade>
-      <Fade direction='right' className='absolute top-0 left-0 w-full h-full'>
-      <img src={testimonial} className='absolute top-0 right-0 w-[12%] h-full -z-10 scale-x-[-1]' />
+      <Fade direction='right' className='absolute top-0 left-0 w-full h-full -z-10'>
+      <img src={testimonial} className='absolute top-0 right-0 w-[12%] h-full -z-10 scale-x-[-1] select-none' />
       </Fade>
     </div>
     </>
