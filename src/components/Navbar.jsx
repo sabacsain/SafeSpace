@@ -84,6 +84,7 @@ const Navbar = () => {
             <SubMenu link={MainPages.RESOURCES}>Educational Resources</SubMenu>
             <SubMenu link={MainPages.HOTLINES}>Emergency Hotlines</SubMenu>
             <SubMenu link={MainPages.NEWS}>News and Updates</SubMenu>
+            <SubMenu link={MainPages.PRIVACY}>Privacy Policy</SubMenu>
             <SubMenu link={MainPages.COMMUNITIES}>Support Communities</SubMenu>
           </Menu>
           <Menu link={MainPages.CONTACT}>Contact</Menu>

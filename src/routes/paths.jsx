@@ -7,7 +7,8 @@ const MainPages = {
     HOTLINES: '/emergency-hotlines',
     NEWS: '/news-and-updates',
     COMMUNITIES: '/support-communities',
-    CONTACT: '/contact-us'
+    CONTACT: '/contact-us',
+    PRIVACY: '/privacy'
 };
 
 const LoginPages = {
