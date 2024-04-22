@@ -39,7 +39,7 @@ const NewsCard = props => {
 const News = () => {
   return (
     <>
-      <Banner title='News and Updates' image='/public/banner/news.png' />
+      <Banner title='News and Updates' image='/banner/news.png' />
       
       <h1 className='mt-12 mx-24 w-72 text-secondary-200 text-4xl font-bold border-b-secondary-200 border-b-4'>Latest Updates</h1>
       

@@ -19,12 +19,11 @@ const HotlineCard = props => {
 const Hotlines = () => {
   return (
     <>
-      <Banner title="Emergency Hotlines" image="/public/banner/educ_resources.png" />
+      <Banner title="Emergency Hotlines" image="/banner/educ_resources.png" />
 
-      
-      <div className="flex flex-col gap-4 pt-12 h-screen mb-36">
-        <p className="mb-4 w-2/3 mx-auto text-center">SafeSpace is a Preventive Mental Health Website. In case of emergencies and other concerns, please refer to the following hotlines:</p>
-        <Zoom>
+      <div className="flex flex-col justify-center items-center gap-4 py-12 w-full min-h-screen">
+        <p className="mb-4 w-2/3 mx-auto text-secondary-200 text-center">SafeSpace is a Preventive Mental Health Website. In case of emergencies and other concerns, please refer to the following hotlines:</p>
+        <Zoom triggerOnce className='w-full'>
         <HotlineCard image={pnp} title="Philippine National Police (PNP)" number="911" />
         <HotlineCard image={hopeline} title="Hopeline Philippines" number="2919" />
         <HotlineCard image={nat_center} title="National Center for Mental Health Crisis" number="1553" />
