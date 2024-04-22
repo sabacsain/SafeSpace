@@ -5,6 +5,14 @@ import { getAuth, GoogleAuthProvider} from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDucYzbFcTZ5jEcOx00-rjdZQ8jRdzbEfM",
+//   authDomain: "safespace-7f0d1.firebaseapp.com",
+//   projectId: "safespace-7f0d1",
+//   storageBucket: "safespace-7f0d1.appspot.com",npm
+//   messagingSenderId: "918143961164",
+//   appId: "1:918143961164:web:a33f81360c8a2a5a44cce9"
+// };
 const firebaseConfig = {
   apiKey: "AIzaSyDucYzbFcTZ5jEcOx00-rjdZQ8jRdzbEfM",
   authDomain: "safespace-7f0d1.firebaseapp.com",
