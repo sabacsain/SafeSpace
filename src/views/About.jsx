@@ -6,6 +6,7 @@ import aboutuser from '../assets/about/aboutuser.png';
 import memberimg from '../assets/about/Brigitte Amplayo.png';
 import memberimg1 from '../assets/about/Raiella Calubayan.png';
 import memberimg2 from '../assets/about/Shyrral Malapit.png';
+import Banner from '../components/Banner';
 
 const MemberCard = props => {
   const [isHovered, setIsHovered] = React.useState(false);
@@ -38,11 +39,8 @@ const MemberCard = props => {
 const About = () => {
   return (
     <div>
-      <div className='relative flex items-center gap-16 w-full h-[100vh] pl-16 -mt-[3vh]'>
-        <div className="logo-container absolute top-[35%]" style={{ left: '45%', right: 'auto', top: '5%' }}>
-          <img src='/logo.png' style={{ width: '800px', height: 'auto' }} alt="Logo" />
-        </div>
-        <div className="about-section flex items-start" style={{ marginTop: '-20vh' }}>
+      <div className='flex flex-col justify-center items-center gap-16 w-full h-[95vh] -m-[1vh] px-40'>
+        <div className='grid grid-rows-1 grid-cols-2 justify-between items-center gap-16 w-[95%] h-1/2'>
           <div>
             <Fade direction='left' duration={1050}>
               <h1 className='text-secondary-200 text-5xl font-bold py-1'>ABOUT US</h1>
@@ -65,29 +63,24 @@ const About = () => {
                 providing a supportive environment where you can be yourself.
               </p>
             </Fade>
-            <Button link={MainPages.HOME} customTheme='bg-secondary-200 hover:bg-accent text-primary absolute bottom-[20%] left-20 right-20 h-auto'>See What Our Customers Have to Say About us. View Client Testimonials</Button>
           </div>
+          <img src='/logo.png' className='w-full h-full object-cover object-left' alt="Logo" />
         </div>
+        <Button link={MainPages.HOME} customTheme='w-[95%] bg-secondary-200 hover:bg-accent text-primary h-auto'>See What Our Customers Have to Say About us. View Client Testimonials</Button>
       </div>
 
-      <div className='container relative flex flex-col items-center justify-center w-full h-32 pt-3 pl-16 pr-16 -mt-[3vh] bg-secondary-200'>
-        <div className='flex items-center justify-between w-full'>
-          <img src={aboutuser} className='w-24 h-auto transform scale-x-[-1] opacity-70' alt="Logo" />
-          <h1 className='text-primary text-4xl font-semibold whitespace-nowrap'>Meet Our Team</h1>
-          <img src={aboutuser} className='w-24 h-auto opacity-70' alt="Logo" />
-        </div>
-      </div>
+      <Banner title='Meet Our Team' image='/banner/aboutuser.png' />
 
-      <div className='grid grid-cols-1 gap-8 justify-items-center w-full h-[70vh] bg-primary text-primary'>
-        <div className='flex justify-center max-w-3xl' style={{ marginTop: '100px' }}>
+      <div className='flex gap-8 justify-center items-center w-full h-[75vh] bg-primary text-primary overflow-hidden'>
+        <div className='flex justify-center max-w-3xl'>
           <div className='grid grid-cols-3 gap-10'>
-            <Fade direction='down' duration={1075}>
+            <Fade direction='up' duration={1075}>
               <MemberCard image={memberimg} name="Brigitte Amplayo" position="Chief Technology Officer" />
             </Fade>
-            <Fade direction='down' duration={1075}>
+            <Fade direction='up' duration={1075}>
               <MemberCard image={memberimg1} name="Raiella Calubayan" position="Company CEO" />
             </Fade>
-            <Fade direction='down' duration={1075}>
+            <Fade direction='up' duration={1075}>
               <MemberCard image={memberimg2} name="Shyirral Malapit" position="Chief Financial Officer" />
             </Fade>
           </div>
