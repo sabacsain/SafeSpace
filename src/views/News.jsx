@@ -1,6 +1,11 @@
 import React from 'react';
 import Banner from '../components/Banner';
 import { Zoom } from 'react-awesome-reveal';
+import news1 from '../assets/news/news1.webp';
+import news2 from '../assets/news/news2.png';
+import news3 from '../assets/news/news3.png';
+import news4 from '../assets/news/news4.png';
+import news5 from '../assets/news/news5.png';
 
 const NewsLargeCard = props => {
   return (
@@ -45,11 +50,11 @@ const News = () => {
       
       <Zoom>
       <div className="flex flex-wrap justify-between mx-20 mb-24">
-        <NewsLargeCard image="/src/assets/news/news1.webp" link='https://www.nbcnews.com/news/us-news/if-you-or-someone-you-know-crisis-these-resources-can-n1267774' title="If you or someone you know is in crisis, these resources can help" date="May 19, 2021">If you are in crisis, or know someone who is, there are many resources that can help. These hotlines and organizations are free and available to anyone who is struggling.</NewsLargeCard>
-        <NewsCard image="/src/assets/news/news2.png" link='https://www.medicalnewstoday.com/articles/8933' title="What is Depression" date="August 5, 2022">Depression is a mental health condition that causes...</NewsCard>
-        <NewsCard image="/src/assets/news/news3.png" link='https://www.medicalnewstoday.com/articles/323454' title="What to know about anxiety" date="December 19, 2923">Anxiety is a natural emotion. However, it can also cause physical symptoms, such as shaking and sweating.</NewsCard>
-        <NewsCard image="/src/assets/news/news4.png" link='https://www.medicalnewstoday.com/articles/145855' title="Stress and How to Manage it" date="March 12, 2020">Stress is a natural reaction to specific demands and events, but ongoing stress can affect a person’s health and wellbeing.</NewsCard>
-        <NewsCard image="/src/assets/news/news5.png" link='https://www.medicalnewstoday.com/articles/happiness-can-be-learned-but-it-may-take-practicing-7-habits#Happiness-is-a-process' title="Habits towards Happiness" date="April 21, 2024">It seems the simplest of tasks: Be happy. It is not a directive to be hedonistic or shallow. Rather, it is about living our years on Earth wisely.</NewsCard>
+        <NewsLargeCard image={news1} link='https://www.nbcnews.com/news/us-news/if-you-or-someone-you-know-crisis-these-resources-can-n1267774' title="If you or someone you know is in crisis, these resources can help" date="May 19, 2021">If you are in crisis, or know someone who is, there are many resources that can help. These hotlines and organizations are free and available to anyone who is struggling.</NewsLargeCard>
+        <NewsCard image={news2} link='https://www.medicalnewstoday.com/articles/8933' title="What is Depression" date="August 5, 2022">Depression is a mental health condition that causes...</NewsCard>
+        <NewsCard image={news3} link='https://www.medicalnewstoday.com/articles/323454' title="What to know about anxiety" date="December 19, 2923">Anxiety is a natural emotion. However, it can also cause physical symptoms, such as shaking and sweating.</NewsCard>
+        <NewsCard image={news4} link='https://www.medicalnewstoday.com/articles/145855' title="Stress and How to Manage it" date="March 12, 2020">Stress is a natural reaction to specific demands and events, but ongoing stress can affect a person’s health and wellbeing.</NewsCard>
+        <NewsCard image={news5} link='https://www.medicalnewstoday.com/articles/happiness-can-be-learned-but-it-may-take-practicing-7-habits#Happiness-is-a-process' title="Habits towards Happiness" date="April 21, 2024">It seems the simplest of tasks: Be happy. It is not a directive to be hedonistic or shallow. Rather, it is about living our years on Earth wisely.</NewsCard>
       </div>  
       </Zoom>
     </>
