@@ -1,5 +1,8 @@
 # SafeSpace
 
+## Latest Website Link
+https://safe-space-fe8a8.web.app/
+
 ## How to run
 1. Make sure that [Node.js](https://nodejs.org/en/download) is installed in your device.
 2. Clone the repo.
