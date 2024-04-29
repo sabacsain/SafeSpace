@@ -27,12 +27,12 @@ const Footer = () => {
           <Link to={MainPages.HOME}>Safe Space</Link>
         </h1>
         <div className='whitespace-pre-wrap'>“Take care of your MIND.<br/> Take care of your LIFE.”</div>
-        <div className='mt-1 text-xs'>&copy; 2024 Safe Space. All rights reserved.</div>
+        <div className='mt-1 text-xs'>&copy; 2024 <ItemLink name="Safe Space" link={MainPages.PRIVACY} />. All rights reserved.</div>
       </div>
 
       <Item title="Services">
-        <ItemLink name="Self-Assessment" link={MainPages.ASSESSMENT} />
         <ItemLink name="Consultation" link={MainPages.CONSULTATION} />
+        <ItemLink name="Self-Assessment" link={MainPages.ASSESSMENT} />
       </Item>
 
       <Item title="Resources">

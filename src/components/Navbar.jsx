@@ -39,13 +39,14 @@ const menuList = [
 const Menu = ({ menu }) => {
   const { pathname } = useLocation();
   const { name, link, submenu } = menu;
+  const submenuList = submenu?.map(item => item.link);
   
   return (
     submenu ? (
       <li className='group relative z-50'>
-        <div className={`flex items-center gap-2 group-hover:text-accent ${(submenu.map(item => item.link)).includes(pathname) && 'text-accent'} transition-colors`}>
+        <div className={`flex items-center gap-2 group-hover:text-accent ${(submenuList).includes(pathname) && 'text-accent'} transition-colors`}>
           <Link to={link}>{name}</Link>
-          <svg className={`w-[14px] h-[14px] ${(submenu.map(item => item.link)).includes(pathname) ? 'fill-accent' : 'fill-secondary-200 '} group-hover:fill-accent group-hover:rotate-180 transition-all ease-in-out duration-300`}>
+          <svg className={`w-[14px] h-[14px] ${(submenuList).includes(pathname) ? 'fill-accent' : 'fill-secondary-200 '} group-hover:fill-accent group-hover:rotate-180 transition-all ease-in-out duration-300`}>
             <use xlinkHref={`${sprite}#dropdown`} />
           </svg>
         </div>
@@ -56,8 +57,8 @@ const Menu = ({ menu }) => {
         </ul>
       </li>
     ) : (
-      <li className={`z-50 hover:text-accent ${pathname === menu.link && 'text-accent'} transition-colors`}>
-        <Link to={menu.link}>{menu.name}</Link>
+      <li className={`z-50 hover:text-accent ${pathname === link && 'text-accent'} transition-colors`}>
+        <Link to={link}>{name}</Link>
       </li>
     )
   );
@@ -67,10 +68,10 @@ const SubMenu = props => {
   const { pathname } = useLocation();
 
   return (
-    <li className='group/sub p-1 h-8 flex items-center'>
+    <li className='group/sub p-1 h-8 w-full flex items-center'>
       <div className='bg-accent w-0 h-full group-hover/sub:w-1 rounded-sm transition-all duration-300'></div>
-      <p className={`group-hover/sub:pl-2 ${pathname === props.link ? 'text-accent' : 'text-secondary-200'} group-hover/sub:text-accent transition-all duration-300`}>
-        <Link to={props.link}>{props.children}</Link>
+      <p className={`w-full group-hover/sub:pl-2 ${pathname === props.link ? 'text-accent' : 'text-secondary-200'} group-hover/sub:text-accent transition-all duration-300`}>
+        <Link to={props.link} className='block w-full'>{props.children}</Link>
       </p>
     </li>
   );
@@ -84,10 +85,10 @@ const UserMenu = props => {
   };
 
   return (
-    <li className='group/sub p-1 h-8 flex items-center' onClick={handleClick}>
-      <div className='bg-accent w-0 h-full group-hover/sub:w-1 rounded-sm transition-all duration-300'></div>
-      <p className='group-hover/sub:pl-2 text-secondary-200 group-hover/sub:text-accent transition-all duration-300'>
-        <Link to={props.link}>{props.children}</Link>
+    <li className='group/sub p-1 w-full h-8 flex items-center' onClick={handleClick}>
+      <div className='bg-[#e85667] w-0 h-full group-hover/sub:w-1 rounded-sm transition-all duration-300'></div>
+      <p className='w-full group-hover/sub:pl-2 text-secondary-200 group-hover/sub:text-[#e85667] transition-all duration-300'>
+        <Link to={props.link} className='block w-full'>{props.children}</Link>
       </p>
     </li>
   );
@@ -116,10 +117,9 @@ const Navbar = () => {
         </ul>
         
         {user ? (
-          <div className='group relative z-50'>
-            <Button>{user?.email}</Button>
-            <ul className='hidden group-hover:block absolute right-0 p-2 -ml-2 w-40 h-auto bg-primary rounded shadow-md'>
-              <UserMenu link={MainPages.HOME}>Profile</UserMenu>
+          <div className='group relative z-50 max-w-96'>
+            <Button theme='dark' customTheme='group-hover:bg-accent w-full'>{user?.email}</Button>
+            <ul className='hidden group-hover:block absolute right-0 p-2 -ml-2 w-full h-auto bg-primary rounded shadow-md'>
               <UserMenu onClick={signUserOut} link={MainPages.HOME}>Logout</UserMenu>
             </ul>
           </div>
