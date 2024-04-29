@@ -22,7 +22,7 @@ const Popup = ({ show, onClose, children }) => {
 
     return show && (
         <div 
-            className={`fixed top-0 flex justify-center items-center w-screen h-screen bg-[#000] bg-opacity-40 ${fade}`}
+            className={`fixed top-0 z-30 flex justify-center items-center w-screen h-screen bg-[#000] bg-opacity-40 ${fade}`}
             onClick={handleClose} 
         >
             <div 
