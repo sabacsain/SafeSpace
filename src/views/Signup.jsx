@@ -5,7 +5,8 @@ import signup_image from '../assets/login/signup.png';
 import login_image from '../assets/login/login.png';
 import Login from './Login';
 import axios from 'axios';
-
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../config/firebase';
 
 const Signup = () => {
   const [first_name, setFirstName] = useState('');
@@ -15,28 +16,67 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    axios.post('https://safespace-1act.onrender.com/signup', {first_name, last_name, email, username, password})
-      .then(res => {
-        console.log(res.data); 
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-        // Go to Login if Signup is successful
-        if (res.data == "Signup Successful") {
-            alert("Signup Successful. User has been created successfully.");
-            navigate(LoginPages.LOGIN);
-        } else if (res.data == "User already exists") {
-            alert("Signup Failed. Username already exists. Please choose a different username.");
-        } else {
-            alert("Something went wrong. Please try again later.");
-        }
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(data => {
+        // Handle successful user creation
+        console.log("User created successfully:", data);
+        alert("User created successfully");
+        navigate(LoginPages.LOGIN);
       })
-      .catch(err => console.log(err));
+      .catch(error => {
+        // Handle errors
+        if (error.code === 'auth/email-already-in-use') {
+          console.error("Email is already in use:", error.message);
+          alert("Email is already in use:", error.message);
+        } else if (error.code === 'auth/weak-password') {
+          console.error("Weak password:", error.message);
+          alert("Weak password:", error.message);
+        } else {
+          console.error("Error creating user:", error);
+          alert("Error creating user:", error);
+        }
+      });
+
   }
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try{
+  //     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  //     console.log(userCredential);
+  //     const user = userCredential.user;
+  //     localStorage.setItem('token', user.accessToken);
+  //     localStorage.setItem('user', JSON.stringify(user));
+  //     navigate(LoginPages.LOGIN);
+      
+  //   } catch(error){
+  //     console.error(error)
+  //   }
+  // }
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+  //   axios.post('http://localhost:8081/signup', {first_name, last_name, email, username, password})
+  //     .then(res => {
+  //       console.log(res.data); 
+
+  //       // Go to Login if Signup is successful
+  //       if (res.data == "Signup Successful") {
+  //           alert("Signup Successful. User has been created successfully.");
+  //           navigate(LoginPages.LOGIN);
+  //       } else if (res.data == "User already exists") {
+  //           alert("Signup Failed. Username already exists. Please choose a different username.");
+  //       } else {
+  //           alert("Something went wrong. Please try again later.");
+  //       }
+  //     })
+  //     .catch(err => console.log(err));
+  // }
   return (
     <>
-  <div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
-    <div class="max-w-screen-lg m-0 sm:m-20 bg-white shadow-lg sm:rounded-lg flex justify-center flex-1 overflow-hidden">
+  <div class="min-h-screen bg-tertiary-200 text-gray-900 flex justify-center">
+    <div class="max-w-screen-lg m-0 sm:m-20 bg-primary shadow-lg sm:rounded-lg flex justify-center flex-1 overflow-hidden">
       
         {/* <!-- LEFT SIDE */}
         <div class="w-1/2 xl:w-1/2  relative overflow-hidden bg-cover bg-no-repeat">
@@ -130,7 +170,7 @@ const Signup = () => {
                   {/* Note Hindi 'to galing sa Custom Button. Ayaw kasi 'pag yung custom need ng link agad sa parameter. */}
                   <button class="h-fit px-8 py-2 font-semibold rounded-full drop-shadow-md transition-colors ease-in-out bg-secondary-200 hover:bg-accent text-primary" >SIGN UP</button>
                   <div class ="mb-20">
-                    <h4 class = "mt-5 text-sm font-small text-tertiary-200">Already have an account?<Link to={LoginPages.LOGIN} class="ms-2 text-sm font-small text-tertiary-200 dark:text-blue-500 hover:underline">Login</Link></h4>
+                    <h4 class = "mt-5 text-sm font-small text-tertiary-300">Already have an account?<a href={LoginPages.LOGIN} class="ms-2 text-sm font-small text-secondary-200 dark:text-blue-500 hover:underline">Login</a></h4>
                   </div>
                 </div>     
 

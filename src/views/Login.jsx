@@ -1,73 +1,60 @@
 import React, {useState} from 'react';
-import { useNavigate, Link} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import { LoginPages, MainPages } from '../routes/paths';
 import login_image from '../assets/login/login.png';
-import axios from 'axios';
+import { auth, provider } from '../config/firebase';
+import { signInWithEmailAndPassword , signInWithPopup} from 'firebase/auth';
 
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  
+  const signInWithGoogle = async () => {
+    const result = await signInWithPopup(auth, provider);
+    console.log(result);
+    navigate(MainPages.HOME);
+  };
 
-  // Function to handle login
-  function handleSubmit(username, password) {
-  // Make a POST request to the login endpoint
-  axios.post('https://safespace-backend.vercel.app/login', { username, password })
-    .then(response => {
-      // Handle successful response
-      console.log(response.data); // Log the response data
-      // Check the response data and perform actions accordingly
-      if (response.data === "Login Successful") {
-        // Redirect or perform other actions for successful login
-        console.log("Login Successful");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then(data => {
+        // Handle successful user login
+        console.log("User logged in successfully:", data);
         navigate(MainPages.HOME);
-      } else {
-        // Handle other login scenarios (e.g., incorrect email/password)
-        console.log("Login Failed:", response.data);
-      }
-    })
-    .catch(error => {
-      // Handle errors
-      console.error('Error during login:', error);
-    });
-}
+      })
+      .catch(error => {
+        // Handle login errors
+        switch (error.code) {
+          case 'auth/user-not-found':
+            console.error("User not found:", error.message);
+            alert("User not found:", error.message);
+            break;
+          case 'auth/wrong-password':
+            console.error("Incorrect password:", error.message);
+            alert("Incorrect password:", error.message);
+            break;
+          case 'auth/too-many-requests':
+            console.error("Too many login attempts. Please try again later.");
+            alert("Too many login attempts. Please try again later.");
+            break;
+          default:
+            console.error("Error logging in. Please try again", error);
+            alert("Error logging in:", error);
+            break;
+        }
+      });
+    
+    
+  }
+  
 
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  
-  //   fetch('https://safespace-1act.onrender.com/login', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({ username, password }),
-  //   })
-  //     .then(response => {
-  //       if (!response.ok) {
-  //         throw new Error('Network response was not ok');
-  //       }
-  //       return response.json();
-  //     })
-  //     .then(data => {
-  //       if (data === "Login Successful") {
-  //         navigate(MainPages.HOME);
-  //       } else if (data === "Incorrect Email or Password") {
-  //         alert("Login Failed. Incorrect Email or Password.");
-  //       } else {
-  //         throw new Error('Unexpected response data');
-  //       }
-  //     })
-  //     .catch(error => {
-  //       console.error('There was a problem with the fetch operation:', error);
-  //       alert("Something went wrong. Please try again later.");
-  //     });
-  // }
-  
-  
   // function handleSubmit(event){
   //   event.preventDefault();
-  //   axios.post('https://safespace-backend.vercel.app/login', {username, password})
+  //   axios.post('http://localhost:8081/login', {username, password})
   //   .then(res => {
   //     console.log(res.data);
       
@@ -85,11 +72,12 @@ const Login = () => {
   //   .catch(err => console.log(err));
         
   // }
+  // }
 
   return (
     <>
-  <div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
-    <div class="max-w-screen-lg m-0 sm:m-20 bg-white shadow-lg sm:rounded-lg flex justify-center flex-1 overflow-hidden">
+  <div class="min-h-screen bg-tertiary-200 flex justify-center">
+    <div class="max-w-screen-lg m-0 sm:m-20 bg-primary shadow-lg sm:rounded-lg flex justify-center flex-1 overflow-hidden">
       
 
         {/* <!-- LEFT SIDE */}
@@ -108,17 +96,17 @@ const Login = () => {
               
               <form class="max-w-lg mx-auto" onSubmit={handleSubmit}>
                 
-              {/* USERNAME */}
+              {/* EMAIL */}
                 <div class="mb-5">
-                  <label for="username" class="block mb-2 text-sm font-medium text-secondary-200 dark:text-white">Username</label>
+                  <label for="email" class="block mb-2 text-sm font-medium text-secondary-200 dark:text-white">Email</label>
                   <div class="relative">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                       <svg class="w-6 h-6 text-secondary-200 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                       <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
                       </svg>
                     </div>
-                    <input type="text" id="username" class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Username"
-                      onChange = {e => setUsername(e.target.value)}  />
+                    <input type="text" id="email" class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Email"
+                      onChange = {e => setEmail(e.target.value)}  />
                   </div>
                 </div>
 
@@ -135,42 +123,51 @@ const Login = () => {
                       onChange = {e => setPassword(e.target.value)}  />
                 </div>
                 </div>
-                
-                
-                <div class="flex items-start mb-5">
-                  <div class="flex items-center h-5">
-                    <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" />
-                  </div>
-                  <label for="remember" class="ms-2 text-sm font-small text-secondary-200 dark:text-gray-100">Remember Me</label>
-                  
-                  <Link to={LoginPages.SIGNUP} class="mb-5 ms-2 text-sm font-small text-tertiary-200 dark:text-blue-500 hover:underline">Forgot Password?</Link>
-
-                </div>
-                
-                
+                        
+ 
                 <div class = "flex flex-col items-center" >
-
                   {/* <Button type="submit" >LOGIN</Button> */}
-                  
                   {/* Note Hindi 'to galing sa Custom Button. Ayaw kasi 'pag yung custom need ng link agad sa parameter. */}
-                  <button class="h-fit px-8 py-2 font-semibold rounded-full drop-shadow-md transition-colors ease-in-out bg-secondary-200 hover:bg-accent text-primary" >LOGIN</button>
+                  <button class=" h-fit px-8 py-2 font-semibold rounded-full drop-shadow-md transition-colors ease-in-out bg-secondary-200 hover:bg-accent text-primary" >LOGIN</button>
                   
-                  <div class ="mb-20">
-                    <h4 class = "mt-5 text-sm font-small text-tertiary-200">Don't have an account yet?<Link to={LoginPages.SIGNUP} class="ms-2 text-sm font-small text-tertiary-200 dark:text-blue-500 hover:underline">Sign up</Link></h4>
+                  <div class ="mb-5">
+                    <h4 class = "mt-5 text-sm font-small text-tertiary-300">Don't have an account yet?<Link to={LoginPages.SIGNUP} class="ms-2 text-sm font-small text-secondary-200 dark:text-blue-500 hover:underline">Sign up</Link></h4>
                   </div>
                 </div>
 
               </form>
-              
+
+
+              <div class="flex mt-5 items-center w-1/2 ">
+                <hr class="border-secondary-200 border-1  w-full rounded-md"></hr>
+                <label class="block font-medium text-sm text-secondary-200 w-full">
+                  or Login with
+                </label>
+                <hr class="border-secondary-200 border-1 w-full rounded-md"></hr>
+              </div>
+
+        
+                {/* SIGN UP with GOOGLE */}
+                <div class="mt-5 mb-20 flex items-center justify-center dark:bg-gray-800">
+                  <button onClick={signInWithGoogle} type="button" class="px-4 py-2 border flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
+                      <img class="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo"/>
+                      <span>Continue with Google</span>
+                  </button>
+                </div>
+
               
 
         
 
 
       </div>
+      
       </div>
+      
       </div>
+      
       </div>
+      
   </div>
     </>
 

@@ -49,7 +49,7 @@ const categories = [
   {
     title: <>Privacy<br/>and Security</>,
     desc: "Your privacy and security are our top priorities. Rest assured, your information is kept confidential and secure with us.",
-    bg: "/category/privacy.png"
+    bg: "/category/privacy.png", link: MainPages.PRIVACY
   },
   {
     title: <>Mental Health<br/>Updates</>,
@@ -84,7 +84,7 @@ const Home = () => {
     {/* Landing */}
     <div className='relative flex items-center gap-16 w-full h-[95vh] pl-16 -mt-[3vh]'>
       {/* Logo */}
-      <div className='group relative grid items-center justify-items-center'>
+      <div className='group relative grid items-center justify-items-center select-none'>
         <img src='/logo.png' className='col-start-1 row-start-1 w-40 h-auto py-7 bg-secondary-100 rounded-full' />
         <div className='col-start-1 row-start-1 w-24 h-24 py-7 bg-tertiary-400 rounded-full -z-10'></div>
         <svg className='absolute col-start-1 row-start-1 ml-20 w-[30rem] h-[30rem] -z-20 fill-current'>
@@ -102,12 +102,12 @@ const Home = () => {
       </Fade>
 
       {/* Design in right */}
-      <Slide direction='right' className='absolute right-0 top-0 w-full h-full' cascade>
+      <Slide direction='right' className='absolute right-0 top-0 w-full h-full -z-10 select-none' cascade>
       <img src={landingBack} className='absolute right-0 top-0 w-[53%] h-full -z-20 ' />
       <img src={landing} className='absolute right-0 top-0 w-1/2 h-full -z-10 ' />
       </Slide>
-      <img src={landing1} className='absolute right-0 top-0 w-[32vw] h-auto' />
-      <img src={landing2} className='absolute right-0 bottom-0 w-[43.5vw] h-[47.5vh]' />
+      <img src={landing1} className='absolute right-0 top-0 w-[32vw] h-auto select-none' />
+      <img src={landing2} className='absolute right-0 bottom-0 w-[43.5vw] h-[47.5vh] select-none' />
     </div>
 
     {/* About */}
@@ -120,7 +120,7 @@ const Home = () => {
         <p>
           At Safe Space, we are dedicated to empowering individuals to  achieve optimal mental health and well-being. Through our comprehensive  support programs, educational resources, and advocacy efforts, we strive  to provide a supportive community where individuals can find  understanding, guidance, and hope. With a commitment to reducing stigma  and increasing access to mental health care, we work tirelessly to  ensure that everyone has the opportunity to lead fulfilling lives.
         </p>
-        <Button link={MainPages.ABOUT} style='bg-primary hover:bg-tertiary-200 text-secondary-200'>Learn More</Button>
+        <Button theme='light' link={MainPages.ABOUT}>Learn More</Button>
       </div>
       </Slide>
     </div>
@@ -152,12 +152,12 @@ const Home = () => {
     </div>
 
     {/* Testimonials */}
-    <div id='testimonials' className='relative flex flex-col justify-center items-center gap-10 w-full h-screen'>
-      <Fade direction='up' className='-mt-12'>
+    <div id='testimonials' className='relative flex flex-col justify-center items-center gap-8 w-full h-screen'>
+      <Fade direction='up' className='mt-12'>
       <h1 className=' text-secondary-200 text-4xl font-bold'>Testimonials</h1>
       </Fade>
-      <div className='items-baseline w-[78%] h-[27.5rem] m-0 rounded-lg overflow-hidden'>
-      <Marquee className='items-baseline w-full h-full rounded-lg overflow-hidden' direction='right' autoFill pauseOnHover pauseOnClick>
+      <div className='w-[75%] rounded-lg overflow-hidden'>
+      <Marquee className='w-full h-full rounded-lg overflow-hidden' direction='right' autoFill pauseOnClick>
         {testimonials.map((item, index) =>
           <TestimonialCard key={index} name={item.name} image={item.image}>{item.review}</TestimonialCard>
         )}
@@ -165,11 +165,11 @@ const Home = () => {
       </div>
 
       {/* Sides design */}
-      <Fade direction='left' className='absolute top-0 left-0 w-full h-full'>
-      <img src={testimonial} className='absolute top-0 left-0 w-[12%] h-full -z-10' />
+      <Fade direction='left' className='absolute top-0 left-0 w-full h-full -z-10'>
+      <img src={testimonial} className='absolute top-0 left-0 w-[12%] h-full -z-10 select-none' />
       </Fade>
-      <Fade direction='right' className='absolute top-0 left-0 w-full h-full'>
-      <img src={testimonial} className='absolute top-0 right-0 w-[12%] h-full -z-10 scale-x-[-1]' />
+      <Fade direction='right' className='absolute top-0 left-0 w-full h-full -z-10'>
+      <img src={testimonial} className='absolute top-0 right-0 w-[12%] h-full -z-10 scale-x-[-1] select-none' />
       </Fade>
     </div>
     </>

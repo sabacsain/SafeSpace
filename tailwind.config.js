@@ -25,6 +25,40 @@ export default {
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
       },
+      animation: {
+        'slide-in': 'slideIn 0.2s ease-in forwards',
+        'slide-out': 'slideOut 0.2s ease-out forwards',
+        'fade-in': 'fadeIn 0.2s ease-in forwards',
+        'fade-out': 'fadeOut 0.2s ease-out forwards',
+      },
+      keyframes: {
+        slideIn: {
+          '0%': {
+            transform: 'translateY(50%)',
+          },
+          '100%': {
+            transform: 'translateY(0)',
+          },
+        },
+        slideOut: {
+          '100%': {
+            transform: 'translateY(50%)',
+          },
+        },
+        fadeIn: {
+          '0%': {
+            opacity: '0',
+          },
+          '100%': {
+            opacity: '1',
+          },
+        },
+        fadeOut: {
+          '100%': {
+            opacity: '0',
+          },
+        },
+      },
     },
   },
   plugins: [],
