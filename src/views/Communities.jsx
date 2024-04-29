@@ -34,7 +34,7 @@ const CommunityCard = props => {
 const Communities = () => {
   return (
     <>
-      <Banner title='Support Communities' image='/banner/communities.png' />
+      <Banner title='Support Communities' image='/banner/communities-overlay.jpg' description='Support communities offer a network of empathy and resources for individuals facing shared challenges, fostering solidarity and empowerment.'/>
       
       <div className='flex flex-col justify-center items-center gap-10'>
         <Fade direction='right' duration={1750}>

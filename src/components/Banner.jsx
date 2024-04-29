@@ -5,13 +5,28 @@ import React from 'react';
  * @param {string} image Path in string format. Must be in the public folder.
  * @returns
  */
-const Banner = ({ title, image  }) => {
+const Banner = ({ title, image , description }) => {
   return (
-    <div className='flex justify-between items-center px-10 w-full h-[16vh] bg-secondary-200 overflow-hidden -z-30'>
-        <div style={{ backgroundImage: `url(${image})` }} className='w-44 h-full bg-cover bg-center select-none'></div>
-        <h1 className='text-primary text-[2.5rem] font-bold uppercase'>{title}</h1>
-        <div style={{ backgroundImage: `url(${image})` }} className='w-44 h-full bg-cover bg-center scale-x-[-1] select-none'></div>
-    </div>
+<div className='relative flex flex-col justify-center items-center px-10 w-full h-[42vh]'>
+  {/* Overlay with transparency */}
+  <div className="absolute inset-0 bg-secondary-200 opacity-70"></div>
+  
+  {/* Background image */}
+  <div 
+    style={{ 
+      backgroundImage: `url(${image})`, 
+      zIndex: -1,
+    }} 
+    className='absolute inset-0 bg-cover bg-center select-none'
+  ></div>
+  
+  {/* Content */}
+  <h1 className='text-primary text-[2.5rem] font-bold uppercase relative z-10'>{title}</h1>
+  <h2 className='text-primary font-small relative z-10 max-w-[40%] text-center'>{description}</h2>
+</div>
+
+
+
   );
 };
 
