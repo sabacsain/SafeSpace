@@ -134,7 +134,7 @@ const Form = () => {
 const Consultation = () => {
   return (
     <>
-    <Banner title='NEED a CONSULTATION?' image='/banner/consultation.png' />
+    <Banner title='NEED a CONSULTATION?' image='/category/advice.png' />
 
     {/* Landing */}
     <div className='grid grid-rows-1 grid-cols-2 gap-10 items-center w-full h-[75vh] px-32 py-16 bg-primary'>

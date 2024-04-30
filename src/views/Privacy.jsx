@@ -1,4 +1,5 @@
 import React from 'react';
+import Banner from '../components/Banner';
 
 const ParagraphCard = props => {
   return (
@@ -34,7 +35,8 @@ const BulletList = props => {
 
 const Contact = () => {
   return (
-    // <Banner title='Support Communities' image='/banner/educ_resources.png' />
+    <>
+    <Banner title='Privacy' image='/banner/privacy-overlay.jpeg' description='Safeguards personal information, ensuring confidentiality and control over data shared in digital and physical spaces.'/>
     <div class="md:max-w-screen-lg text-justify px-4 sm:px-6 lg:px-8 pt-24 pb-6 mx-auto">
        
        {/*Privacy Policy Header  */}
@@ -101,6 +103,7 @@ const Contact = () => {
       In compliance with the Philippine Data Privacy Act of 2012 (Republic Act No. 10173), we assure you that we will only collect, use, and process your personal information in accordance with the principles of transparency, legitimate purpose, and proportionality. We will implement reasonable and appropriate organizational, physical, and technical security measures to protect your personal data against unauthorized access, use, or disclosure.
       </ParagraphCard>
     </div>
+    </>
   );
 };
 

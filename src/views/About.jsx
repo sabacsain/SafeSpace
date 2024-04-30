@@ -20,12 +20,12 @@ const MemberCard = props => {
     >
       <img
         src={props.image}
-        className={`mx-auto w-full h-full object-cover rounded-xl ${isHovered ? 'opacity-50' : ''}`}
+        className={`mx-auto w-full h-full object-cover rounded-xl ${isHovered ? 'opacity-90' : ''}`}
         alt={props.title}
         style={{ transition: 'opacity 0.3s' }}
       />
       {isHovered && (
-        <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-50 rounded-xl">
+        <div className="absolute bottom-0 flex items-center justify-center bg-primary w-full h-1/3 mt-36 mx-auto bg-opacity-90 rounded-xl">
           <p className="text-white text-2xl font-bold text-center" style={{ lineHeight: '1.5' }}>
             <span className="text-lg font-bold">{props.name}</span><br />
             <span className="text-sm">{props.position}</span>
@@ -69,10 +69,10 @@ const About = () => {
         <Button link={MainPages.HOME} customTheme='w-[95%] bg-secondary-200 hover:bg-accent text-primary h-auto'>See What Our Customers Have to Say About us. View Client Testimonials</Button>
       </div>
 
-      <Banner title='Meet Our Team' image='/banner/aboutuser.png' />
-
-      <div className='flex gap-8 justify-center items-center w-full h-[75vh] bg-primary text-primary overflow-hidden'>
-        <div className='flex justify-center max-w-3xl'>
+    
+      <div className='flex flex-col gap-8 items-center w-full h-screen bg-primary text-primary overflow-hidden'>
+        <h1 className='w-full h-fit py-16 mb-10 text-4xl text-center font-bold text-primary bg-secondary-200'>Meet Our Team</h1>
+        <div className='pt-14 flex justify-center items-center max-w-3xl'>
           <div className='grid grid-cols-3 gap-10'>
             <Fade direction='up' duration={1075}>
               <MemberCard image={memberimg} name="Brigitte Amplayo" position="Chief Technology Officer" />

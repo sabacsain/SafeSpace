@@ -10,7 +10,9 @@ import { Zoom } from 'react-awesome-reveal';
 const EducationalResources = () => {
   return (
     <>
-    <Banner title='Educational Resources' image='/banner/educ_resources.png' />
+    <Banner title='Educational Resources' 
+            image='/banner/book-overlay.jpg' 
+            description="Education resources on mental health offer tools and materials for learning and teaching about mental well-being, including guides, videos, and interactive content." />
 
     <Zoom>
     <div className='flex flex-col justify-center items-center p-12 w-full h-[75vh]'>
