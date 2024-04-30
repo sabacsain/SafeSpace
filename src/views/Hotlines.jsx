@@ -19,7 +19,7 @@ const HotlineCard = props => {
 const Hotlines = () => {
   return (
     <>
-      <Banner title="Emergency Hotlines" image="/banner/educ_resources.png" />
+      <Banner title="Emergency Hotlines" image="/banner/emergency-overlay.webp" description="Emergency hotlines provide immediate assistance and support for urgent situations, offering confidential help and guidance 24/7." />
 
       <div className="flex flex-col justify-center items-center gap-4 py-12 w-full min-h-screen">
         <p className="mb-4 w-2/3 mx-auto text-secondary-200 text-center">SafeSpace is a Preventive Mental Health Website. In case of emergencies and other concerns, please refer to the following hotlines:</p>

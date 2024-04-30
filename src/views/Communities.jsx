@@ -7,7 +7,7 @@ import psych from '../assets/communities/psych_today.png'
 
 const CommunityCard = props => {
   return (
-    <div className='flex justify-center items-center w-full h-[75vh] px-20'>
+    <div className='flex justify-center items-center w-full h-[85vh] px-20'>
       <div className="flex gap-20 h-fit">
       { props.title === "7 Cups" ? (
       <>
@@ -34,7 +34,7 @@ const CommunityCard = props => {
 const Communities = () => {
   return (
     <>
-      <Banner title='Support Communities' image='/banner/communities.png' />
+      <Banner title='Support Communities' image='/banner/communities-overlay.jpg' description='Support communities offer a network of empathy and resources for individuals facing shared challenges, fostering solidarity and empowerment.'/>
       
       <div className='flex flex-col justify-center items-center gap-10'>
         <Fade direction='right' duration={1750}>
