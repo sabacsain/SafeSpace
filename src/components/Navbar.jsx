@@ -40,13 +40,14 @@ const menuList = [
 const Menu = ({ menu }) => {
   const { pathname } = useLocation();
   const { name, link, submenu } = menu;
+  const submenuList = submenu?.map(item => item.link);
   
   return (
     submenu ? (
       <li className='group relative z-50 font-medium'>
-        <div className={`flex items-center font-medium gap-2 group-hover:text-primary ${(submenu.map(item => item.link)).includes(pathname) && 'text-primary'} transition-colors`}>
+        <div className={`flex items-center font-medium gap-2 group-hover:text-primary ${(submenuList).includes(pathname) && 'text-primary'} transition-colors`}>
           <Link to={link}>{name}</Link>
-          <svg className={`w-[14px] h-[14px] ${(submenu.map(item => item.link)).includes(pathname) ? 'fill-primary' : 'fill-tertiary-300 '} group-hover:fill-primary group-hover:rotate-180 transition-all ease-in-out duration-300`}>
+          <svg className={`w-[14px] h-[14px] ${(submenuList).includes(pathname) ? 'fill-primary' : 'fill-tertiary-200 '} group-hover:fill-primary group-hover:rotate-180 transition-all ease-in-out duration-300`}>
             <use xlinkHref={`${sprite}#dropdown`} />
           </svg>
         </div>
@@ -57,8 +58,8 @@ const Menu = ({ menu }) => {
         </ul>
       </li>
     ) : (
-      <li className={`z-50 font-medium hover:text-primary ${pathname === menu.link && 'text-primary'} transition-colors`}>
-        <Link to={menu.link}>{menu.name}</Link>
+      <li className={`z-50 font-medium hover:text-primary ${pathname === link && 'text-primary'} transition-colors`}>
+        <Link to={link}>{name}</Link>
       </li>
     )
   );
@@ -68,10 +69,10 @@ const SubMenu = props => {
   const { pathname } = useLocation();
 
   return (
-    <li className='group/sub p-1 h-8 flex items-center'>
+    <li className='group/sub p-1 h-8 w-full flex items-center'>
       <div className='bg-accent w-0 h-full group-hover/sub:w-1 rounded-sm transition-all duration-300'></div>
-      <p className={`group-hover/sub:pl-2 ${pathname === props.link ? 'text-accent' : 'text-secondary-200'} group-hover/sub:text-accent transition-all duration-300`}>
-        <Link to={props.link}>{props.children}</Link>
+      <p className={`w-full group-hover/sub:pl-2 ${pathname === props.link ? 'text-accent' : 'text-secondary-200'} group-hover/sub:text-accent transition-all duration-300`}>
+        <Link to={props.link} className='block w-full'>{props.children}</Link>
       </p>
     </li>
   );
@@ -85,10 +86,10 @@ const UserMenu = props => {
   };
 
   return (
-    <li className='group/sub p-1 h-8 flex items-center' onClick={handleClick}>
-      <div className='bg-primary w-0 h-full group-hover/sub:w-1 rounded-sm transition-all duration-300'></div>
-      <p className='group-hover/sub:pl-2 text-secondary-200 group-hover/sub:text-accent transition-all duration-300'>
-        <Link to={props.link}>{props.children}</Link>
+    <li className='group/sub p-1 w-full h-8 flex items-center' onClick={handleClick}>
+      <div className='bg-accent w-0 h-full group-hover/sub:w-1 rounded-sm transition-all duration-300'></div>
+      <p className='w-full group-hover/sub:pl-2 text-secondary-200 group-hover/sub:text-accent transition-all duration-300'>
+        <Link to={props.link} className='block w-full'>{props.children}</Link>
       </p>
     </li>
   );
@@ -103,7 +104,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className='sticky top-0 flex justify-between items-center w-full z-50 p-2 bg-secondary-200 text-tertiary-300 shadow-lg'>
+    <header className='sticky top-0 flex justify-between items-center w-full z-50 p-2 bg-secondary-200 text-tertiary-200'>
       <div className='flex items-center text-2xl font-extrabold text-primary'>
         <img src='/logo.png' className='w-20 h-auto mr-1' />
         Safe Space
@@ -117,9 +118,9 @@ const Navbar = () => {
         </ul>
         
         {user ? (
-          <div className='group relative z-50'>
-            <Button_White>{user?.email}</Button_White>
-            <ul className='hidden group-hover:block absolute right-0 p-2 -ml-2 w-40 h-auto bg-primary rounded shadow-md'>
+          <div className='group relative z-50 max-w-96'>
+            <Button customTheme='bg-primary group-hover:text-accent text-secondary-200'>{user?.email}</Button>
+            <ul className='hidden group-hover:block absolute right-0 p-2 -ml-2 w-full h-auto bg-primary rounded shadow-md'>
               <UserMenu link={MainPages.HOME}>Profile</UserMenu>
               <UserMenu onClick={signUserOut} link={MainPages.HOME}>Logout</UserMenu>
             </ul>

@@ -70,9 +70,9 @@ const About = () => {
       </div>
 
     
-      <div className='flex flex-col gap-8 justify-center items-center w-full h-[75vh] bg-secondary-200 text-primary overflow-hidden'>
-        <h1 className='mb-10 text-4xl font-bold text-primary'> Meet Our Team</h1>
-        <div className='flex justify-center max-w-3xl'>
+      <div className='flex flex-col gap-8 items-center w-full h-screen bg-primary text-primary overflow-hidden'>
+        <h1 className='w-full h-fit py-16 mb-10 text-4xl text-center font-bold text-primary bg-secondary-200'>Meet Our Team</h1>
+        <div className='pt-14 flex justify-center items-center max-w-3xl'>
           <div className='grid grid-cols-3 gap-10'>
             <Fade direction='up' duration={1075}>
               <MemberCard image={memberimg} name="Brigitte Amplayo" position="Chief Technology Officer" />
@@ -91,3 +91,4 @@ const About = () => {
 };
 
 export default About;
+

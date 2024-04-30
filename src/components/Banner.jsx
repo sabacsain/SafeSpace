@@ -9,7 +9,7 @@ const Banner = ({ title, image , description }) => {
   return (
 <div className='relative flex flex-col justify-center items-center px-10 w-full h-[42vh]'>
   {/* Overlay with transparency */}
-  <div className="absolute inset-0 bg-secondary-200 opacity-70"></div>
+  <div className="absolute inset-0 bg-gradient-to-b from-secondary-200 to-secondary-200/70"></div>
   
   {/* Background image */}
   <div 
