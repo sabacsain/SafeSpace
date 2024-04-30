@@ -44,15 +44,15 @@ const NewsCard = props => {
 const News = () => {
   return (
     <>
-      <Banner title='News and Updates' image='/banner/news.png' />
+      <Banner title='News and Updates' image='/banner/news-overlay.jpg'  description='News delivers timely updates and information on current events, ranging from local to global affairs, keeping audiences informed and engaged.'/>
       
       <h1 className='mt-12 mx-24 w-72 text-secondary-200 text-4xl font-bold border-b-secondary-200 border-b-4'>Latest Updates</h1>
       
       <Zoom>
       <div className="flex flex-wrap justify-between mx-20 mb-24">
         <NewsLargeCard image={news1} link='https://www.nbcnews.com/news/us-news/if-you-or-someone-you-know-crisis-these-resources-can-n1267774' title="If you or someone you know is in crisis, these resources can help" date="May 19, 2021">If you are in crisis, or know someone who is, there are many resources that can help. These hotlines and organizations are free and available to anyone who is struggling.</NewsLargeCard>
-        <NewsCard image={news2} link='https://www.medicalnewstoday.com/articles/8933' title="What is Depression" date="August 5, 2022">Depression is a mental health condition that causes...</NewsCard>
-        <NewsCard image={news3} link='https://www.medicalnewstoday.com/articles/323454' title="What to know about anxiety" date="December 19, 2923">Anxiety is a natural emotion. However, it can also cause physical symptoms, such as shaking and sweating.</NewsCard>
+        <NewsCard image={news2} link='https://www.medicalnewstoday.com/articles/8933' title="What is Depression" date="August 5, 2022">Depression is a mental health condition that causes a chronic feeling of emptiness, sadness...</NewsCard>
+        <NewsCard image={news3} link='https://www.medicalnewstoday.com/articles/323454' title="What to know about anxiety" date="December 19, 2023">Anxiety is a natural emotion. However, it can also cause physical symptoms, such as shaking and sweating.</NewsCard>
         <NewsCard image={news4} link='https://www.medicalnewstoday.com/articles/145855' title="Stress and How to Manage it" date="March 12, 2020">Stress is a natural reaction to specific demands and events, but ongoing stress can affect a person’s health and wellbeing.</NewsCard>
         <NewsCard image={news5} link='https://www.medicalnewstoday.com/articles/happiness-can-be-learned-but-it-may-take-practicing-7-habits#Happiness-is-a-process' title="Habits towards Happiness" date="April 21, 2024">It seems the simplest of tasks: Be happy. It is not a directive to be hedonistic or shallow. Rather, it is about living our years on Earth wisely.</NewsCard>
       </div>  
