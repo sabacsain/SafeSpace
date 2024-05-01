@@ -21,19 +21,23 @@ const RadioButton = ({ id, question, onRadioChange }) => {
               value={value}
               onChange={handleRadioChange}
               className="hidden peer"
+              required
             />
-            <label
-              htmlFor={`${id}-${value}`}
-              className={`h-16 mb-8 inline-flex items-center justify-center w-full p-5 text-black bg-primary border border-${
-                value === 5 ? 'secondary-200' : value === 4 ? 'secondary-100' : value === 3 ? 'tertiary-500' : value === 2 ? 'light_accent' : 'accent'
-              } rounded-2xl cursor-pointer peer-checked:bg-${
-                value === 5 ? 'secondary-200' : value === 4 ? 'secondary-100' : value === 3 ? 'tertiary-500' : value === 2 ? 'light_accent' : 'accent'
-              } peer-checked:border-${
-                value === 5 ? 'secondary-200' : value === 4 ? 'secondary-100' : value === 3 ? 'tertiary-500' : value === 2 ? 'light_accent' : 'accent'
-              } peer-checked:text-primary hover:text-primary hover:bg-${
-                value === 5 ? 'secondary-200' : value === 4 ? 'secondary-100' : value === 3 ? 'tertiary-500' : value === 2 ? 'light_accent' : 'accent'
-              } ease-in-out transform hover:-translate-y-5 transition duration-400`}
-            >
+
+          <label
+            htmlFor={`${id}-${value}`}
+            className={`h-16 mb-8 inline-flex items-center justify-center w-full p-5 text-black bg-primary border rounded-2xl cursor-pointer 
+              ${value === 5 && 'border-secondary-200 hover:bg-secondary-200 peer-checked:bg-secondary-200 peer-checked:border-secondary-200'}
+              ${value === 4 && 'border-secondary-100 hover:bg-secondary-100 peer-checked:bg-secondary-100 peer-checked:border-secondary-100'}
+              ${value === 3 && 'border-tertiary-500 hover:bg-tertiary-500 peer-checked:bg-tertiary-500 peer-checked:border-tertiary-500'}
+              ${value === 2 && 'border-light_accent hover:bg-light_accent peer-checked:bg-light_accent peer-checked:border-light_accent'}
+              ${value === 1 && 'border-accent hover:bg-accent peer-checked:bg-accent peer-checked:border-accent'}
+              peer-checked:text-primary
+              hover:text-primary
+              ease-in-out transform hover:-translate-y-5
+              transition duration-400`
+            }
+          >
 
               <div className="block">
                 <div className="w-full text-md font-semibold text-center">
@@ -67,6 +71,14 @@ const SelfAssessment = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    // If all radio button groups are not selected, display error message
+    if (Object.values(responses).length < 10) {
+      setMessage("Warning: Please answer all questions.");
+      setShowPopup(true);
+      return;
+    }
+
     const total = Object.values(responses).reduce((acc, curr) => acc + curr, 0);
     const meanValue = total / Object.values(responses).length;
     setMean(meanValue.toFixed(2));   
@@ -92,8 +104,7 @@ const SelfAssessment = () => {
         setMessage("Unknown error occured. Please try again.");
     }
 
-    setShowPopup(true);
-    
+   
   };
 
   return (
@@ -154,7 +165,7 @@ const SelfAssessment = () => {
             onRadioChange={handleRadioChange}
           />
           <div className="mt-5 mb-5  flex item-center justify-center">
-            <Button type="submit">Submit</Button>
+            <Button onClick={handleSubmit} type="submit">Submit</Button>
           </div>
         </form>
       
@@ -175,10 +186,10 @@ const SelfAssessment = () => {
 
       <Popup show={showPopup} onClose={() => setShowPopup(false)}>
         <div className="flex flex-col justify-center items-center w-full h-full text-secondary-200 text-xl text-center font-semibold">
-          <p>{`Mood Rating: ${mean}`}</p>
+          <p>{mean != null && `Mood Rating: ${mean}`}</p>
           <p class='mt-5 w-4/5 text-sm text-black'>{message}</p>
         </div>
-    </Popup>
+      </Popup>
 
     </>
   );
