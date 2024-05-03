@@ -66,7 +66,7 @@ const About = () => {
           </div>
           <img src='/logo.png' className='w-full h-full object-cover object-left' alt="Logo" />
         </div>
-        <Button link={MainPages.HOME} customTheme='w-[95%] bg-secondary-200 hover:bg-accent text-primary h-auto'>See What Our Customers Have to Say About us. View Client Testimonials</Button>
+        <Button link={MainPages.HOME + '#testimonials'} customTheme='w-[95%] bg-secondary-200 hover:bg-accent text-primary h-auto'>See What Our Customers Have to Say About us. View Client Testimonials</Button>
       </div>
 
     

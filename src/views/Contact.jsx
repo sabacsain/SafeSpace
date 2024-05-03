@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../components/Button';
 
 const Contact = () => {
   return (
@@ -18,14 +19,14 @@ const Contact = () => {
                 <div className="grid grid-cols-2 gap-28">
                   {/* FIRST NAME */}
                   <div>
-                    <label htmlFor="first-name" className="block mb-2 text-sm font-medium text-secondary-200 dark:text-white">First Name</label>
+                    <label htmlFor="first-name" className="block mb-2 text-sm font-medium text-secondary-200">First Name</label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                         <svg className="w-6 h-6 text-secondary-200 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                           <path fillRule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clipRule="evenodd"/>
                         </svg>
                       </div>
-                      <input type="text" id="first-name" className="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-[150%] pl-10 py-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="First Name" />
+                      <input type="text" id="first-name" className="bg-gray-50 border border-gray-100 text-black text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-[150%] pl-10 py-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="First Name" />
                     </div>
                   </div>
                   {/* LAST NAME */}
@@ -37,7 +38,7 @@ const Contact = () => {
                           <path fillRule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clipRule="evenodd"/>
                         </svg>
                       </div>
-                      <input type="text" id="last-name" className="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-[150%] pl-10 py-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Last Name" />
+                      <input type="text" id="last-name" className="bg-gray-50 border border-gray-100 text-black text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-[150%] pl-10 py-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Last Name" />
                     </div>
                   </div>
                 </div>
@@ -52,7 +53,7 @@ const Contact = () => {
                           <path d="M20.677 4.117A1.996 1.996 0 0 0 20 4H4c-.225 0-.44.037-.642.105l.758.607L12 10.742 19.9 4.7l.777-.583Z"/>
                         </svg>
                       </div>
-                      <input type="text" id="email" className="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-[150%] pl-10 py-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Email" />
+                      <input type="text" id="email" className="bg-gray-50 border border-gray-100 text-black text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-[150%] pl-10 py-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Email" />
                     </div>
                   </div>
                   <div>
@@ -63,18 +64,18 @@ const Contact = () => {
                           <path fillRule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clipRule="evenodd"/>
                         </svg>
                       </div>
-                      <input type="text" id="phonenum" className="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-[150%] pl-10 py-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Phone Number" />
+                      <input type="text" id="phonenum" className="bg-gray-50 border border-gray-100 text-black text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-[150%] pl-10 py-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Phone Number" />
                     </div>
                   </div>
                 </div>
                 {/* MESSAGE */}
                 <div className="mb-5">
                   <label htmlFor="message" className="block mb-2 text-sm font-medium text-secondary-200 dark:text-white">Message</label>
-                  <textarea id="message" className="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-[120%] pl-5 py-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your message here..." rows="5"></textarea>
+                  <textarea id="message" className="bg-gray-50 border border-gray-100 text-black text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-[120%] pl-5 py-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your message here..." rows="5"></textarea>
                 </div>
                 {/* SUBMIT BUTTON */}
-                <div className="flex justify-center">
-                  <button type="submit" className="bg-secondary-100 hover:bg-primary-dark text-white font-semibold py-3 px-8 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-opacity-50 ml-20">Send Message</button>
+                <div className="flex justify-center w-full">
+                  <Button type="submit" customTheme='ml-20 bg-secondary-100 text-primary hover:bg-tertiary-400'>Send Message</Button>
                 </div>
               </form>
             </div>

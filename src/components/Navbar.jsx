@@ -47,7 +47,7 @@ const Menu = ({ menu }) => {
       <li className='group relative z-50 font-medium'>
         <div className={`flex items-center font-medium gap-2 group-hover:text-primary ${(submenuList).includes(pathname) && 'text-primary'} transition-colors`}>
           <Link to={link}>{name}</Link>
-          <svg className={`w-[14px] h-[14px] ${(submenuList).includes(pathname) ? 'fill-primary' : 'fill-tertiary-200 '} group-hover:fill-primary group-hover:rotate-180 transition-all ease-in-out duration-300`}>
+          <svg className={`w-[14px] h-[14px] ${(submenuList).includes(pathname) ? 'fill-primary' : 'fill-tertiary-300 '} group-hover:fill-primary group-hover:rotate-180 transition-all ease-in-out duration-300`}>
             <use xlinkHref={`${sprite}#dropdown`} />
           </svg>
         </div>
@@ -104,7 +104,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className='sticky top-0 flex justify-between items-center w-full z-50 p-2 bg-secondary-200 text-tertiary-200'>
+    <header className='sticky top-0 flex justify-between items-center w-full z-50 p-2 bg-secondary-200 text-tertiary-300'>
       <div className='flex items-center text-2xl font-extrabold text-primary'>
         <img src='/logo.png' className='w-20 h-auto mr-1' />
         Safe Space
@@ -119,14 +119,14 @@ const Navbar = () => {
         
         {user ? (
           <div className='group relative z-50 max-w-96'>
-            <Button customTheme='bg-primary group-hover:text-accent text-secondary-200'>{user?.email}</Button>
+            <Button customTheme='bg-primary group-hover:bg-tertiary-200 group-hover:text-accent text-secondary-200'>{user?.email}</Button>
             <ul className='hidden group-hover:block absolute right-0 p-2 -ml-2 w-full h-auto bg-primary rounded shadow-md'>
               <UserMenu link={MainPages.HOME}>Profile</UserMenu>
               <UserMenu onClick={signUserOut} link={MainPages.HOME}>Logout</UserMenu>
             </ul>
           </div>
         ) : (
-          <Button_White link={LoginPages.LOGIN}>Join Us</Button_White>
+          <Button link={LoginPages.LOGIN} customTheme='hover:bg-tertiary-200 bg-primary hover:text-accent text-secondary-200'>Join Us</Button>
         )}
                 
       </nav>
