@@ -111,10 +111,11 @@ const SelfAssessment = () => {
   return (
     <>
       <Banner title="Self-Assessment" image="/banner/assessment-overlay.jpeg"  description='Self-assessment enables individuals to evaluate their own skills, knowledge, or well-being, facilitating personal growth and reflection.' />
-      <HeaderText header='Answer at your own pace' description='Take a moment to reflect on your mental well-being by completing this brief questionnaire.'></HeaderText>
-
+      <div className='py-8'>
+        <HeaderText header='Answer at your own pace' description='Take a moment to reflect on your mental well-being by completing this brief questionnaire.'></HeaderText>
+      </div>
       <div className="md:max-w-screen-lg text-justify px-4 sm:px-6 lg:px-8 pt-10 pb-6 mx-auto">
-        <h1 className="mb-5 text-3xl font-bold text-black">Mood Questionnaire</h1>
+        <h1 className="pt-8 mb-5 text-3xl font-bold text-black">Mood Questionnaire</h1>
         <form onSubmit={handleSubmit}>
           <RadioButton
             id="Mood-Q1"

@@ -105,10 +105,12 @@ const Navbar = () => {
 
   return (
     <header className='sticky top-0 flex justify-between items-center w-full z-50 p-2 bg-secondary-200 text-tertiary-300'>
-      <div className='flex items-center text-2xl font-extrabold text-primary'>
-        <img src='/logo.png' className='w-20 h-auto mr-1' />
-        Safe Space
-      </div>
+      <Link to={MainPages.HOME}>
+        <div className='transition-colors hover:text-tertiary-200 flex items-center text-2xl font-extrabold text-primary'>
+          <img src='/logo.png' className='w-20 h-auto mr-1' />
+          Safe Space
+        </div>
+      </Link>
       
       <nav className='flex items-center gap-10'>
         <ul className='flex gap-10'>

@@ -22,7 +22,7 @@ const Contact = () => {
           
           <div className="mt-10 mb-10 flex">
             <div className="pb-10 pt-10 rounded-3xl bg-secondary-200 p-2 text-primary flex flex-col w-[175%]">
-              <p className='text-4xl ml-10 text-bold'>Contact Us</p>
+              <p className='text-4xl ml-10 text-bold' >Contact Us</p>
               <form className="max-w-lg mx-auto ml-10"
                     onSubmit={handleSubmit}>
                 {/* FIRST NAME */}
