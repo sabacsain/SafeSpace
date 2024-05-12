@@ -12,6 +12,7 @@ const Contact = () => {
   };
 
   return (
+    <>
     <div className='xl:max-w-screen-xl text-justify px-4 sm:px-6 lg:px- pt-20 pb-6 mx-auto'>
         <div>
           <h1 className='text-secondary-200 text-5xl font-bold py-4 ml-[30%]'>Have Some Questions?</h1>
@@ -98,14 +99,13 @@ const Contact = () => {
             </div>
           </div>
         </div>
-
-      <Popup show={showPopup} onClose={() => setShowPopup(false)}>
+    </div>
+    <Popup show={showPopup} onClose={() => setShowPopup(false)}>
       <div className='flex justify-center items-center w-full h-full text-secondary-200 text-xl text-center font-semibold'>
         Thank you for your message. We'll get back to you as soon as possible. 
       </div>
       </Popup>
-    </div>
-
+    </>
     
   );
 };
