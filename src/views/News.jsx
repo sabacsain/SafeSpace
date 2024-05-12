@@ -1,6 +1,6 @@
 import React from 'react';
 import Banner from '../components/Banner';
-import { Zoom } from 'react-awesome-reveal';
+import { Fade } from 'react-awesome-reveal';
 import news1 from '../assets/news/news1.webp';
 import news2 from '../assets/news/news2.png';
 import news3 from '../assets/news/news3.png';
@@ -48,7 +48,7 @@ const News = () => {
       
       <h1 className='mt-12 mx-24 w-72 text-secondary-200 text-4xl font-bold border-b-secondary-200 border-b-4'>Latest Updates</h1>
       
-      <Zoom>
+      <Fade>
       <div className="flex flex-wrap justify-between mx-20 mb-24">
         <NewsLargeCard image={news1} link='https://www.nbcnews.com/news/us-news/if-you-or-someone-you-know-crisis-these-resources-can-n1267774' title="If you or someone you know is in crisis, these resources can help" date="May 19, 2021">If you are in crisis, or know someone who is, there are many resources that can help. These hotlines and organizations are free and available to anyone who is struggling.</NewsLargeCard>
         <NewsCard image={news2} link='https://www.medicalnewstoday.com/articles/8933' title="What is Depression" date="August 5, 2022">Depression is a mental health condition that causes a chronic feeling of emptiness, sadness...</NewsCard>
@@ -56,7 +56,7 @@ const News = () => {
         <NewsCard image={news4} link='https://www.medicalnewstoday.com/articles/145855' title="Stress and How to Manage it" date="March 12, 2020">Stress is a natural reaction to specific demands and events, but ongoing stress can affect a person’s health and wellbeing.</NewsCard>
         <NewsCard image={news5} link='https://www.medicalnewstoday.com/articles/happiness-can-be-learned-but-it-may-take-practicing-7-habits#Happiness-is-a-process' title="Habits towards Happiness" date="April 21, 2024">It seems the simplest of tasks: Be happy. It is not a directive to be hedonistic or shallow. Rather, it is about living our years on Earth wisely.</NewsCard>
       </div>  
-      </Zoom>
+      </Fade>
     </>
   );
 };
