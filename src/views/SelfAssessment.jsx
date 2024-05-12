@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from '../components/Button';
 import Banner from '../components/Banner';
 import Popup from '../components/Popup';
+import HeaderText from '../components/HeaderText';
 
 const RadioButton = ({ id, question, onRadioChange }) => {
   const handleRadioChange = e => {
@@ -110,8 +111,9 @@ const SelfAssessment = () => {
   return (
     <>
       <Banner title="Self-Assessment" image="/banner/assessment-overlay.jpeg"  description='Self-assessment enables individuals to evaluate their own skills, knowledge, or well-being, facilitating personal growth and reflection.' />
+      <HeaderText header='Answer at your own pace' description='Take a moment to reflect on your mental well-being by completing this brief questionnaire.'></HeaderText>
 
-      <div className="md:max-w-screen-lg text-justify px-4 sm:px-6 lg:px-8 pt-24 pb-6 mx-auto">
+      <div className="md:max-w-screen-lg text-justify px-4 sm:px-6 lg:px-8 pt-10 pb-6 mx-auto">
         <h1 className="mb-5 text-3xl font-bold text-black">Mood Questionnaire</h1>
         <form onSubmit={handleSubmit}>
           <RadioButton

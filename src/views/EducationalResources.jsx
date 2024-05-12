@@ -6,6 +6,7 @@ import calmharm from '../assets/educ_resources/calm_harm.png';
 import change2chill from '../assets/educ_resources/change_to_chill.png';
 import studentsxdepression from '../assets/educ_resources/students_against_depression.png';
 import { Zoom } from 'react-awesome-reveal';
+import HeaderText from '../components/HeaderText';
 
 const EducationalResources = () => {
   return (
@@ -13,9 +14,10 @@ const EducationalResources = () => {
     <Banner title='Educational Resources' 
             image='/banner/book-overlay.jpg' 
             description="Education resources on mental health offer tools and materials for learning and teaching about mental well-being, including guides, videos, and interactive content." />
-
+    <HeaderText header='Learn More' 
+                description='The following resources might be helpful for mental health awareness. Click for more info'></HeaderText>
     <Zoom>
-    <div className='flex flex-col justify-center items-center p-12 w-full h-[75vh]'>
+    <div className='flex flex-col justify-center items-center w-full h-[75vh]'>
       <div className='grid grid-cols-4 gap-16'>
         <PokeCard image={mindful} link="https://www.mindful.org/" title="Mindful">
           Mindful.org is a website that shares content, training, courses, and more – all around the topic of mental health. From meditation to mental health in professional settings, they cover a wide range of topics in a thoughtful and accessible way.

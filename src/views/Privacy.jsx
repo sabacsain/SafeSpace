@@ -5,7 +5,7 @@ const ParagraphCard = props => {
   return (
     <div class="mb-10">
       <h4 class="text-xl font-bold text-secondary-200">{props.title}</h4>
-      <p class="my-4 text-lg text-gray-500">
+      <p class="indent-16 my-4 text-lg text-gray-500">
       {props.children}
       </p>
     </div>
@@ -16,7 +16,7 @@ const Header = props => {
   return(
   <div class="mb-10">
     <h3 class="text-2xl font-bold text-secondary-200">{props.title}</h3>
-    <p class="my-4 text-lg text-gray-500">
+    <p class="indent-16 my-4 text-lg text-gray-500">
     {props.children}
     </p>
   </div>
@@ -42,7 +42,7 @@ const Contact = () => {
        {/*Privacy Policy Header  */}
       <h2 class="mb-2 text-4xl text-center  font-extrabold text-secondary-200">Privacy Policy</h2>
       <h4 class="mb-10 text-sm text-center  font-medium text-tertiary-400">Last Updated: April 21, 2024</h4>
-        <p class="mb-10 my-4 text-lg text-gray-500">
+        <p class="indent-16 mb-10 my-4 text-lg text-gray-500">
         Safespace is committed to protecting the privacy of our users. This Privacy Policy describes how we collect, use, disclose, and safeguard your information when you visit our website, including any other media form, media channel, mobile website, or mobile application related or connected thereto (collectively, the "Site"). Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
         </p>
       

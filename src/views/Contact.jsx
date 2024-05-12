@@ -1,20 +1,29 @@
-import React from 'react';
 import Button from '../components/Button';
+import React, { useState } from 'react';
+import Popup from '../components/Popup';
 
 const Contact = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // other validation and db operations
+    setShowPopup(true);
+  };
+
   return (
-    <div className='relative flex items-center gap-16 w-full h-[95vh] pl-16 -mt-[3vh]'>
-      <div className="about-section flex items-start">
+    <div className='xl:max-w-screen-xl text-justify px-4 sm:px-6 lg:px- pt-20 pb-6 mx-auto'>
         <div>
           <h1 className='text-secondary-200 text-5xl font-bold py-4 ml-[30%]'>Have Some Questions?</h1>
-          <p className='text-secondary-100 text-lg py-1'>
-            We love to hear from you, but we might not reply as quick as you expect due to high volume of emails. Please give us at least 24 hours before re-sending your email.<br/>
-            If you have any question, please be as detailed as you can, so we can reply to you with the most useful answer to your question. Additionally, if your query is urgent or time-sensitive, consider mentioning it in the subject line of your email or message. We strive to provide prompt and helpful responses to all inquiries, ensuring a positive experience for our users. Thank you for your understanding and cooperation.
+          <p className='text-black text-lg py-1 max-w-md mx-auto'>
+            We love to hear from you, just fill out the form below.<br/>
           </p>
-          <div className="mt-4 flex">
-            <div className="rounded-3xl bg-secondary-200 p-2 text-primary flex flex-col w-[155%]">
-              <p className='text-4xl py-2 ml-10 text-bold'>Contact Us</p>
-              <form className="max-w-lg mx-auto ml-10">
+          
+          <div className="mt-10 mb-10 flex">
+            <div className="pb-10 pt-10 rounded-3xl bg-secondary-200 p-2 text-primary flex flex-col w-[175%]">
+              <p className='text-4xl ml-10 text-bold'>Contact Us</p>
+              <form className="max-w-lg mx-auto ml-10"
+                    onSubmit={handleSubmit}>
                 {/* FIRST NAME */}
                 <div className="grid grid-cols-2 gap-28">
                   {/* FIRST NAME */}
@@ -74,23 +83,30 @@ const Contact = () => {
                   <textarea id="message" className="bg-gray-50 border border-gray-100 text-black text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-[120%] pl-5 py-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your message here..." rows="5"></textarea>
                 </div>
                 {/* SUBMIT BUTTON */}
-                <div className="flex justify-center w-full">
+                <div className="pt-3 flex justify-center w-full">
                   <Button type="submit" customTheme='ml-20 bg-secondary-100 text-primary hover:bg-tertiary-400'>Send Message</Button>
                 </div>
               </form>
             </div>
-            <div className="ml-8 mt-4 text-secondary-100">
+            <div className="ml-8 mt-16">
               <p className="text-3xl py-3 font-bold text-secondary-200">Request a Callback</p>
-              <p className="text-lg text-secondary-100 mr-8 mb-7">If you prefer, we can give you a call instead. Just provide your phone number and a convenient time, and we'll get back to you as soon as possible to assist you with any questions or concerns you may have. The following are contact details of SafeSpace in various platforms:</p>
-              <p className="text-xl text-bold text-secondary-100">Phone Number: 940-1411</p>
-              <p className="text-xl text-bold text-secondary-100">Mobile Number: +63054842713 / +63052143212</p>
-              <p className="text-xl text-bold text-secondary-100">Email: safespace@gmail.com</p>
-              <p className="text-xl text-bold text-secondary-100">Location: #28 KwinYasmin Street, Barangay Parang, Marikina City</p>
+              <p className="text-lg text-black mr-8 mb-7">If you prefer, we can give you a call instead. Just provide your phone number and a convenient time. The following are contact details of SafeSpace in various platforms:</p>
+              <p className="text-lg text-black">Phone Number: 8-940-1411</p>
+              <p className="text-lg text-black">Mobile Number: +639123456790 / +63952143212</p>
+              <p className="text-lg text-black">Email: safespace@email.com</p>
+              <p className="text-lg text-black mr-8 mb-7">Location: #28 KwinYasmin Street, Barangay Parang, Marikina City</p>
             </div>
           </div>
         </div>
+
+      <Popup show={showPopup} onClose={() => setShowPopup(false)}>
+      <div className='flex justify-center items-center w-full h-full text-secondary-200 text-xl text-center font-semibold'>
+        Thank you for your message. We'll get back to you as soon as possible. 
       </div>
+      </Popup>
     </div>
+
+    
   );
 };
 
