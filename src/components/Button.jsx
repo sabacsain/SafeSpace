@@ -7,8 +7,16 @@ import { useNavigate } from 'react-router-dom';
  * @param {string} theme Optional. Either 'light' (white button) or 'dark' (blue button).
  * @param {string} customTheme Optional. Custom styling using Tailwind.
  */
-const Button = ({ link, theme, customTheme, children, ...rest }) => {
+const Button = ({ outsideLink, link, theme, customTheme, children, ...rest }) => {
   const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (outsideLink) {
+      window.open(outsideLink, '_blank'); 
+    } else {
+      navigate(link); 
+    }
+  };
 
   return (
     <button 
@@ -18,8 +26,9 @@ const Button = ({ link, theme, customTheme, children, ...rest }) => {
                   ${(theme === undefined && customTheme === undefined) && 'bg-secondary-200 hover:bg-accent text-primary'}
                   ${customTheme}`
                 }
-      onClick={() => navigate(link)}
+      onClick={handleClick}
       {...rest}
+
     >
         {children}
     </button>

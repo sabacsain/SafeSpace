@@ -2,11 +2,13 @@ import React from 'react';
 import Button from '../components/Button';
 import { LoginPages, MainPages } from '../routes/paths';
 import { Fade, Slide } from 'react-awesome-reveal';
-import aboutuser from '../assets/about/aboutuser.png';
+import HeaderText from '../components/HeaderText';
+
 import memberimg from '../assets/about/Brigitte Amplayo.png';
 import memberimg1 from '../assets/about/Raiella Calubayan.png';
 import memberimg2 from '../assets/about/Shyrral Malapit.png';
-import Banner from '../components/Banner';
+
+
 
 const MemberCard = props => {
   const [isHovered, setIsHovered] = React.useState(false);
@@ -46,13 +48,13 @@ const About = () => {
               <h1 className='text-secondary-200 text-5xl font-bold py-1'>ABOUT US</h1>
             </Fade>
             <Fade direction='left' duration={1050}>
-              <p className='text-secondary-100 text-lg py-6'>Who are we? and What We Do For You</p>
+              <p className='text-black text-lg py-6'>Who are we? and What We Do For You</p>
             </Fade>
             <Fade direction='left' duration={1050}>
               <h2 className='text-secondary-200 text-5x1 font-bold py-1'>Safe Space</h2>
             </Fade>
             <Fade direction='left' duration={1050}>
-              <p className='text-secondary-100 text-lg'>
+              <p className='text-black text-lg '>
                 We believe in fostering a safe and inclusive space where <br />
                 individuals can freely express themselves without fear of <br />
                 judgment or discrimination. Our safe space is built on <br />
@@ -71,8 +73,9 @@ const About = () => {
 
     
       <div className='flex flex-col gap-8 items-center w-full h-screen bg-primary text-primary overflow-hidden'>
-        <h1 className='w-full h-fit py-16 mb-10 text-4xl text-center font-bold text-primary bg-secondary-200'>Meet Our Team</h1>
-        <div className='pt-14 flex justify-center items-center max-w-3xl'>
+        <h1 className='w-full h-fit py-16 text-4xl text-center font-bold text-primary bg-secondary-200'>Meet Our Team</h1>
+        <HeaderText header="Hi, this is the Safespace Team!" description='Get to know the dedicated individuals for expanding mental health awareness and driving the innovation forward.'></HeaderText>
+        <div className='pt-5 flex justify-center items-center max-w-3xl'>
           <div className='grid grid-cols-3 gap-10'>
             <Fade direction='up' duration={1075}>
               <MemberCard image={memberimg} name="Brigitte Amplayo" position="Chief Technology Officer" />

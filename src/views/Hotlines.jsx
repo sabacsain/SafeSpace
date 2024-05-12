@@ -5,6 +5,7 @@ import pnp from '../assets/hotlines/pnp.png';
 import manila_center from '../assets/hotlines/manila-center.png';
 import nat_center from '../assets/hotlines/nat-center.png';
 import { Zoom } from 'react-awesome-reveal';
+import HeaderText from '../components/HeaderText';
 
 const HotlineCard = props => {
   return (
@@ -20,9 +21,10 @@ const Hotlines = () => {
   return (
     <>
       <Banner title="Emergency Hotlines" image="/banner/emergency-overlay.webp" description="Emergency hotlines provide immediate assistance and support for urgent situations, offering confidential help and guidance 24/7." />
-
       <div className="flex flex-col justify-center items-center gap-4 py-12 w-full min-h-screen">
-        <p className="mb-4 w-2/3 mx-auto text-secondary-200 text-center">SafeSpace is a Preventive Mental Health Website. In case of emergencies and other concerns, please refer to the following hotlines:</p>
+        <HeaderText header='Dial the following Numbers'
+                    description='In case of emergencies and other concerns, please refer to the following hotlines:'></HeaderText>
+        <p className="mb-4 w-2/3 mx-auto text-black text-center"></p>
         <Zoom triggerOnce className='w-full'>
         <HotlineCard image={pnp} title="Philippine National Police (PNP)" number="911" />
         <HotlineCard image={hopeline} title="Hopeline Philippines" number="2919" />

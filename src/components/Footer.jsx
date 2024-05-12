@@ -37,12 +37,22 @@ const Footer = () => {
 
       <Item title="Resources">
         <ItemLink name="Educational Resources" link={MainPages.RESOURCES} />
+        <ItemLink name="News and Updates" link={MainPages.NEWS} />
+        <ItemLink name="Privacy Policy" link={MainPages.PRIVACY} />
         <ItemLink name="Support Communities" link={MainPages.COMMUNITIES} />
       </Item>
 
       <Item title="Contact Us">
         <p>safespace@email.com</p>
         <p>0912-456-7890</p>
+      </Item>
+
+      <Item title="Emergency Hotlines">
+        <p>In case of emergencies, dial the following numbers:</p>
+        <p>PNP: 911</p>
+        <p>Hopeline PH: 2919</p>
+        <p>NCMH: 1553</p>
+        <p>MLC: 8-969-1600</p>
       </Item>
     </footer>
   );
