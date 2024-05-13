@@ -53,7 +53,7 @@ const Communities = () => {
         <Fade direction='left' duration={1750}>
         <CommunityCard image={cups} 
                        title="7 Cups"
-                       likn='https://www.7cups.com'>
+                       link='https://www.7cups.com'>
           7 Cups is a comprehensive online platform that serves as a beacon of support for individuals navigating the complexities of mental health challenges. At its core, 7 Cups operates as a bridge between those seeking solace and understanding and a network of compassionate, trained listeners ready to offer empathetic ears and guidance. Through its array of resources, individuals can access anonymous chat rooms, participate in forums, and engage in one-on-one messaging, all designed to provide a safe and nurturing environment for expression and connection.
         </CommunityCard>
         </Fade>
