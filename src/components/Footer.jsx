@@ -48,7 +48,8 @@ const Footer = () => {
       </Item>
 
       <Item title="Emergency Hotlines">
-        <p>In case of emergencies, dial the following numbers:</p>
+        <p>SafeSpace is a Preventive Mental Health Website,</p>
+        <p>if in case of emergency, contact the following emergency hotlines.</p>
         <p>PNP: 911</p>
         <p>Hopeline PH: 2919</p>
         <p>NCMH: 1553</p>
